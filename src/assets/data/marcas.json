@@ -1,0 +1,32 @@
+[
+  {
+    "rnc": "000000001",
+    "tipo": "Facturador Electrónico",
+    "estado": "Disponible",
+    "fecha_inicio_operacion": "2023/05/12"
+  },
+  {
+    "rnc": "000000001",
+    "tipo": "Facturador Gratuito",
+    "estado": "No disponible",
+    "fecha_inicio_operacion": "2023/05/14"
+  },
+  {
+    "rnc": "000000002",
+    "tipo": "Facturador Electrónico",
+    "estado": "Disponible",
+    "fecha_inicio_operacion": "2023/05/12"
+  },
+  {
+    "rnc": "000000002",
+    "tipo": "Facturador Gratuito",
+    "estado": "No disponible",
+    "fecha_inicio_operacion": "2023/05/14"
+  },
+  {
+    "rnc": "000000003",
+    "tipo": "Facturador Electrónico",
+    "estado": "Disponible",
+    "fecha_inicio_operacion": "2023/05/12"
+  }
+]
