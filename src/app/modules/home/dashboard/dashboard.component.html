@@ -11,10 +11,15 @@
                             <label class="col-form-label">rnc:</label>
                         </div>
                         <div class="col-auto">
-                            <input type="text" class="form-control"  [(ngModel)]="rnc">
+                            <input type="text" 
+                                   class="form-control" 
+                                   [(ngModel)]="rnc" 
+                                   (keyup)="limpiarCampos()">
                         </div>
                         <div class="col col-form-label">
-                            <button type="submit" class="btn btn-success btn-sm" (click)="buscarRNC()">Buscar</button>
+                            <button type="submit" 
+                                    class="btn btn-success btn-sm" 
+                                    (click)="buscarRNC()">Buscar</button>
                         </div>
                     </div>
                     <!-- Razon Social -->
