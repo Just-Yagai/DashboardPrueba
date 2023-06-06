@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SelectService } from './select.service';
+import { AmbienteService } from './services/ambiente.service';
 
 @Component({
   selector: 'app-select',
@@ -8,36 +8,24 @@ import { SelectService } from './select.service';
 })
 export class SelectComponent implements OnInit {
 
-  @Input() selectedTipoCertificacion!: string;
-
-  public datas: any = [];
+  public Select: any = [];
+  
   @Input() e_CF: boolean;
 
-  rnc!: string;
-  ambiente: any = [];
-  canal: any = [];
-  isSelectDisabled: boolean = true;
-
-  constructor( private GetServiceSelect: SelectService){
+  constructor(private services: AmbienteService){
     this.e_CF = false;
   }
 
-  ngOnInit(){}
+  ngOnInit(){
+    this.cargarData();
+  }
 
-  getSelect(){
-    this.GetServiceSelect.getDataSelect(this.selectedTipoCertificacion).subscribe(data => {
-      if (data) {
-        this.ambiente = data.produccion;
-        this.ambiente = data.preCertificacion;
-        this.ambiente = data.certificacion;
-        this.canal = data.b2b;
-        this.canal = data.b2c;
-        this.isSelectDisabled = false; 
-      } else {
-        this.ambiente = [];
-        this.canal = [];
-        this.isSelectDisabled = true; 
-      }
-    })
+  cargarData(){
+    this.services.getAmbiente()
+        .subscribe( resp => {
+          this.Select = resp;
+          console.log(this.Select);
+          // console.log(resp);
+        })
   }
 }

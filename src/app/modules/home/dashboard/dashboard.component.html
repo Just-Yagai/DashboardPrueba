@@ -42,7 +42,7 @@
                                 <label class="col-form-label">Tipo certificacion:</label>
                             </div>
                             <div class="col-lg-6">
-                                <select class="form-control" [(ngModel)]="selectedTipoCertificacion" [disabled]="isSelectDisabled" (change)="getDatosTipoCertificacion()">
+                                <select class="form-select" [(ngModel)]="selectedTipoCertificacion" [disabled]="isSelectDisabled" (change)="getDatosTipoCertificacion()">
                                     <option disabled selected>Seleccionar tipo...</option>
                                     <option *ngFor="let tipoCert of tipoCertificacion" [value]="tipoCert.tipo">{{ tipoCert.tipo }}</option>
                                 </select>
