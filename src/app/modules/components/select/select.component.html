@@ -8,10 +8,8 @@
         </div>
         <div class="col-lg">
             <select class="form-select" aria-label="Default select example">
-                <option selected>Seleccionar...</option>
-                <option value="produccion">Produccion</option>
-                <option value="preCertificacion">PreCertificacion</option>
-                <option value="certificacion">Certificacion</option>
+                <option value="0" selected>Seleccionar...</option>
+                <option *ngFor="let item of Ambientes" [value]="item.id">{{ item.nombre }}</option>
             </select>
         </div>
         <!-- Select Canal -->
@@ -20,9 +18,8 @@
         </div>
         <div class="col-lg">
             <select class="form-select" aria-label="Default select example">
-                <option selected>Seleccionar...</option>
-                <option value="b2b">B2B</option>
-                <option value="b2c">B2C</option>
+                <option value="0" selected>Seleccionar...</option>
+                <option *ngFor="let item of Canal" [value]="item.id">{{ item.nombre }}</option>
             </select>
         </div>
         <!-- Select Tipo E-CF -->

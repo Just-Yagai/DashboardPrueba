@@ -13,10 +13,10 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let items of Marcas; let i = index">
-                <td>{{ items.tipo }}</td>
-                <td [ngStyle]="{ 'color': items.estado === 'Disponible' ? 'green' : 'red' }">{{ items.estado }}</td>
-                <td>{{ items.fecha_inicio_operacion }}</td>
+            <tr *ngFor="let item of Marcas">
+                <td>{{ item. tipo }}</td>
+                <td [ngStyle]="{ 'color': item.estado === 'Disponible' ? 'green' : 'red' }">{{ item.estado }}</td>
+                <td>{{ item.fecha_inicio_operacion }}</td>
                 <td>
                     <!-- <img width="30" height="30" 
                     [ngClass]="items.btn === 'Remover' ? 'remove-image' : 'enable-image'"

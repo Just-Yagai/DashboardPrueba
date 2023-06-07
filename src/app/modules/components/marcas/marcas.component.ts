@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MarcasService } from './marcas.service';
+import { RespMarca } from 'src/app/core/interface/marca.interface';
 
 @Component({
   selector: 'app-marcas',
@@ -8,11 +9,19 @@ import { MarcasService } from './marcas.service';
 })
 export class MarcasComponent implements OnInit {
 
-  public Marcas: any = [];
+  Marcas: RespMarca[] = [];
   
-  constructor( private getServices: MarcasService){}
+  constructor( private getMarcasServices: MarcasService){}
 
-  ngOnInit(){}
+  ngOnInit(){
+    // this.obtenerMarcas();
+  }
 
-  getMarcas(){}
+  // obtenerMarcas(){
+  //   this.getMarcasServices.getMarcas()
+  //       .subscribe((data) => {
+  //         this.Marcas = data;
+  //         console.log(data);
+  //       });
+  // }
 }
