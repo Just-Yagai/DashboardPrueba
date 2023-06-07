@@ -8,24 +8,18 @@ import { AmbienteService } from './services/ambiente.service';
 })
 export class SelectComponent implements OnInit {
 
-  public Select: any = [];
-  
   @Input() e_CF: boolean;
+
+  ambiente: any;
 
   constructor(private services: AmbienteService){
     this.e_CF = false;
   }
 
   ngOnInit(){
-    this.cargarData();
-  }
-
-  cargarData(){
-    this.services.getAmbiente()
-        .subscribe( resp => {
-          this.Select = resp;
-          console.log(this.Select);
-          // console.log(resp);
-        })
+    this.services.getAmbiente().subscribe((data) => {
+      this.ambiente = data;
+      console.log(data);
+    });
   }
 }

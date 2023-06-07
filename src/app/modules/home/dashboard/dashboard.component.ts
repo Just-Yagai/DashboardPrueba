@@ -4,10 +4,9 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-
   rnc!: string;
   razonSocial!: string;
   tipoCertificacion: any = [];
@@ -15,70 +14,76 @@ export class DashboardComponent implements OnInit {
   isSelectDisabled: boolean = true;
   datosTipo: any = [];
   rncInvalido: boolean = false;
+
+  constructor(private getDashboard: DashboardService) {}
+
+  ngOnInit() {}
+
+  buscarRNC() {
+      if (!this.rnc) {
+        Swal.fire({
+          icon: 'question',
+          text: 'Aún no se ha introducido el RNC.',
+          allowOutsideClick: false, 
+          allowEscapeKey: false
+        });
+        return;
+      }
   
-  constructor( private getDashboard: DashboardService){}
-
-  ngOnInit(){}
-
-  buscarRNC(){
-    if (!this.rnc) {
-      Swal.fire({
-        icon: 'question',
-        // title: '¿Agregaste un RNC?',
-        text: 'Aún no se ha introducido el RNC.'
-      });
-      return;
-    }
-
-    this.getDashboard.getRNC(this.rnc).subscribe(data => {
+    this.getDashboard.getRNC(this.rnc).subscribe((data) => {
       if (data) {
         this.razonSocial = data.razonSocial;
         this.tipoCertificacion = data.tipo_certificacion;
-        this.selectedTipoCertificacion = null; 
-        this.isSelectDisabled = false; 
+        this.isSelectDisabled = false;
+  
+        const tipoEmisor = this.tipoCertificacion.find((tipo: any) => tipo.tipo === 'Emisor');
+        const tipoProveedor = this.tipoCertificacion.find((tipo: any) => tipo.tipo === 'Proveedor');
+  
         Swal.fire({
           icon: 'success',
           title: 'Success',
-          // text: 'El RNC está correcto.'
-          // text: 'El número del RNC es correcto.',
           text: 'El RNC ha sido ingresado correctamente.',
-          timer: 1500,
+          timer: 1000,
           timerProgressBar: true,
-          showConfirmButton: false
+          showConfirmButton: false,
+          allowOutsideClick: false, 
+          allowEscapeKey: false
         });
-        if (this.tipoCertificacion.length > 0) {
-          this.selectedTipoCertificacion = this.tipoCertificacion[0].selected;
-        }    
+
+        this.selectedTipoCertificacion = tipoEmisor ? 'Emisor' : tipoProveedor ? 'Proveedor' : null;
+        const tipoSeleccionado = tipoEmisor || tipoProveedor;
+        this.datosTipo.estado = tipoSeleccionado ? tipoSeleccionado.estado : '';
+        this.datosTipo.inicio_postulacion = tipoSeleccionado ? tipoSeleccionado.inicio_postulacion : '';
+        this.datosTipo.finalizacion_postulacion = tipoSeleccionado ? tipoSeleccionado.finalizacion_postulacion : '';
+        
       } else {
         this.rnc = '';
         this.razonSocial = '';
-        this.tipoCertificacion = []; 
-        this.selectedTipoCertificacion = null; 
+        this.tipoCertificacion = [];
         this.isSelectDisabled = true;
+  
         Swal.fire({
           icon: 'error',
           title: 'Error',
-          // text: 'El RNC es inválido.',
-          // text: 'El RNC no es válido.',
           text: 'Se ha ingresado un RNC inválido.',
-          // text: 'El número del RNC no es válido.',
-          timer: 1500,
+          timer: 1000,
           timerProgressBar: true,
-          showConfirmButton: false
+          showConfirmButton: false,
+          allowOutsideClick: false, 
+          allowEscapeKey: false
         });
       }
-
-      this.datosTipo.estado = '';
-      this.datosTipo.inicio_postulacion = '';
-      this.datosTipo.finalizacion_postulacion = '';
     });
   }
 
   getDatosTipoCertificacion() {
-    this.datosTipo = this.tipoCertificacion.find((tipoCert: { tipo: string | null; }) => tipoCert.tipo === this.selectedTipoCertificacion);
-  }  
+    this.datosTipo = this.tipoCertificacion.find(
+      (tipoCert: { tipo: string | null }) =>
+        tipoCert.tipo === this.selectedTipoCertificacion
+    );
+  }
 
-  limpiarCampos(){
+  limpiarCampos() {
     if (!this.rnc) {
       this.razonSocial = '';
       this.tipoCertificacion = [];

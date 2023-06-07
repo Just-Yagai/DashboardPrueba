@@ -38,7 +38,7 @@
     "tipo_certificacion": [
       {
         "selected": "Seleccionar tipo...",
-        "tipo": "Emisor",
+        "tipo": "Proveedor",
         "estado": "No registrado",
         "inicio_postulacion": "N/A",
         "finalizacion_postulacion": "N/A"
