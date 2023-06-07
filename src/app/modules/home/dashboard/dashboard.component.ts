@@ -1,25 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DashboardService } from './dashboard.service';
 import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
+  
   rnc!: string;
   razonSocial!: string;
   tipoCertificacion: any = [];
   selectedTipoCertificacion!: string | null;
   isSelectDisabled: boolean = true;
   datosTipo: any = [];
-  rncInvalido: boolean = false;
+  // rncInvalido: boolean = false;
 
   constructor(private getDashboard: DashboardService) {}
 
   ngOnInit() {}
 
-  buscarRNC() {
+  buscarRNC(): void {
       if (!this.rnc) {
         Swal.fire({
           icon: 'question',

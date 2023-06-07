@@ -7,5 +7,4 @@ export interface RespMarca {
     fecha_inicio_operacion: string;
     AmbienteID: number;
     CanalID: number;
-    ambiente?: RespAmbiente; // Propiedad opcional para almacenar el ambiente relacionado
 }

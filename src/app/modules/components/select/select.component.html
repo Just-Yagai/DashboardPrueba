@@ -1,5 +1,4 @@
 <!-- Select Option per Table -->
-
 <div class="container">
     <div class="row">
         <!-- Select Ambiente -->
@@ -9,7 +8,7 @@
         <div class="col-lg">
             <select class="form-select" aria-label="Default select example">
                 <option value="0" selected>Seleccionar...</option>
-                <option *ngFor="let item of Ambientes" [value]="item.id">{{ item.nombre }}</option>
+                <option *ngFor="let item of dataAmbientes" [value]="item.id">{{ item.nombre }}</option>
             </select>
         </div>
         <!-- Select Canal -->
@@ -19,7 +18,7 @@
         <div class="col-lg">
             <select class="form-select" aria-label="Default select example">
                 <option value="0" selected>Seleccionar...</option>
-                <option *ngFor="let item of Canal" [value]="item.id">{{ item.nombre }}</option>
+                <option *ngFor="let item of dataCanal" [value]="item.id">{{ item.nombre }}</option>
             </select>
         </div>
         <!-- Select Tipo E-CF -->

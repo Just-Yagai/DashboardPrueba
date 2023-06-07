@@ -5,14 +5,14 @@
     "estado": "Disponible",
     "fecha_inicio_operacion": "2023/05/12",
     "AmbienteID": 1,
-    "CanalID": 1
+    "CanalID": 2
   },
   {
     "rnc": "001",
     "tipo": "Facturador Gratuito",
     "estado": "No disponible",
     "fecha_inicio_operacion": "2023/05/14",
-    "AmbienteID": 2,
+    "AmbienteID": 1,
     "CanalID": 1
   },
   {
@@ -20,12 +20,44 @@
     "tipo": "Lorem ipsum dolor sit amet",
     "estado": "Disponible",
     "fecha_inicio_operacion": "2023/12/14",
-    "AmbienteID": 3,
-    "CanalID": 1
+    "AmbienteID": 1,
+    "CanalID": 2
   },
   {
     "rnc": "001",
     "tipo": "Lorem ipsum dolor sit amet",
+    "estado": "N/A",
+    "fecha_inicio_operacion": "2023/09/25",
+    "AmbienteID": 3,
+    "CanalID": 2
+  },
+  {
+    "rnc": "002",
+    "tipo": "Facturador",
+    "estado": "Disponible",
+    "fecha_inicio_operacion": "2023/05/12",
+    "AmbienteID": 1,
+    "CanalID": 1
+  },
+  {
+    "rnc": "002",
+    "tipo": "Gratuito",
+    "estado": "No disponible",
+    "fecha_inicio_operacion": "2023/05/14",
+    "AmbienteID": 2,
+    "CanalID": 1
+  },
+  {
+    "rnc": "003",
+    "tipo": "Lorem ipsum",
+    "estado": "Disponible",
+    "fecha_inicio_operacion": "2023/12/14",
+    "AmbienteID": 3,
+    "CanalID": 1
+  },
+  {
+    "rnc": "003",
+    "tipo": "dolor sit amet",
     "estado": "N/A",
     "fecha_inicio_operacion": "2023/09/25",
     "AmbienteID": 3,

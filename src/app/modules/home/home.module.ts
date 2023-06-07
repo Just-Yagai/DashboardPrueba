@@ -11,6 +11,8 @@ import { SelectComponent } from '../components/select/select.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { MarcasService } from '../components/marcas/marcas.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,14 @@ import { HeaderComponent } from 'src/app/shared/header/header.component';
     CommonModule,
     HomeRoutingModule,
     FormsModule,
-    HttpClientModule
-  ]
+    HttpClientModule,
+    // BrowserModule
+  ],
+  exports: [
+    SelectComponent
+  ],
+  providers: [
+    MarcasService
+  ],
 })
 export class HomeModule { }
