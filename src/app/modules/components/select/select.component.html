@@ -6,9 +6,12 @@
             <label class="col-form-label">Ambiente:</label>
         </div>
         <div class="col-lg">
-            <select class="form-select" aria-label="Default select example">
-                <option value="0" selected>Seleccionar...</option>
-                <option *ngFor="let item of dataAmbientes" [value]="item.id">{{ item.nombre }}</option>
+            <select class="form-select" (change)="onAmbienteChange($any($event.target).value)">
+                <option value="0" disabled selected>Seleccionar...</option>
+                <option value="1">Produccion</option>
+                <option value="2">Precertificacion</option>
+                <option value="3">Certificacion</option>
+                <!-- <option *ngFor="let item of dataAmbientes" [value]="item.id">{{ item.nombre }}</option> -->
             </select>
         </div>
         <!-- Select Canal -->
@@ -16,9 +19,11 @@
            <label class="col-form-label">Canal:</label> 
         </div>
         <div class="col-lg">
-            <select class="form-select" aria-label="Default select example">
-                <option value="0" selected>Seleccionar...</option>
-                <option *ngFor="let item of dataCanal" [value]="item.id">{{ item.nombre }}</option>
+            <select class="form-select" (change)="onCanalChange($any($event.target).value)">
+                <option value="0" disabled selected>Seleccionar...</option>
+                <option value="1">B2B</option>
+                <option value="2">B2C</option>
+                <!-- <option *ngFor="let item of dataCanal" [value]="item.id">{{ item.nombre }}</option> -->
             </select>
         </div>
         <!-- Select Tipo E-CF -->
@@ -42,3 +47,9 @@
         </div>
     </div>
 </div>
+
+<app-marcas [dataMarcas]="filterMarcas()" *ngIf="tablaMarcas === true"></app-marcas>
+<app-delegaciones [dataDelegaciones]="filterDelegaciones()" *ngIf="tablaDelegaciones === true"></app-delegaciones>
+<app-secuencias *ngIf="tablaSecuencias === true"></app-secuencias>
+<app-rnc-estado *ngIf="tablaRNC === true"></app-rnc-estado>
+

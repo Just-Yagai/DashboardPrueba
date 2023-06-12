@@ -9,42 +9,47 @@ import { RespMarca } from 'src/app/core/interface/marca.interface';
 })
 export class MarcasComponent implements OnInit {
 
-  dataMarcas: any = [];
-  // marcas: any[] = [];
+  // dataMarcas: any = [];
 
-  // Marcas: RespMarca[] = [];
-  
+  @Input() dataMarcas: any[];
+
   constructor( private getMarcasServices: MarcasService){}
 
-  ngOnInit() {
-    this.obtenerMarcas();
-    this.obtenerPorID();
-    this.obtenerPorRNC();
-  }
+  ngOnInit() {}
 
-  obtenerPorRNC(){
-    const rnc = '001';
-    this.getMarcasServices.getMarcasPorRNC(rnc)
-        .subscribe((data: RespMarca[]) => {
-          console.log(data);
-        });
-  }
+  cambiarEstado(marca: any) {
+    if (marca.estado === 'Disponible') {
+      marca.estado = 'No disponible';
+    } else {
+      marca.estado = 'Disponible';
+    }
 
-  obtenerPorID(){
-    const ambienteID = 1;
-    const canalID = 2;
-    const rnc = '001';
-    this.getMarcasServices.getMarcasPorID(ambienteID, canalID, rnc)
-        .subscribe((data: RespMarca[]) => {
-          console.log(data);
+    this.getMarcasServices.actualizarMarca(marca)
+      .subscribe(resp => {
+        console.log(resp);
       });
   }
 
-  obtenerMarcas(){
-    this.getMarcasServices.getMarcas()
-        .subscribe((data: RespMarca[]) => {
-          this.dataMarcas = data;
-          console.log(data);
-        });
-  }
+  // obtenerPorRNC(){
+  //   const rnc = '001';
+  //   this.getMarcasServices.getMarcasPorRNC(rnc)
+  //       .subscribe((data: RespMarca[]) => {
+  //       });
+  // }
+
+  // obtenerPorID(){
+  //   const ambienteID = 1;
+  //   const canalID = 2;
+  //   const rnc = '001';
+  //   this.getMarcasServices.getMarcasPorID(ambienteID, canalID, rnc)
+  //       .subscribe((data: RespMarca[]) => {
+  //     });
+  // }
+
+  // obtenerMarcas(){
+  //   this.getMarcasServices.getMarcas()
+  //       .subscribe((data: RespMarca[]) => {
+  //         this.dataMarcas = data;
+  //       });
+  // }
 }

@@ -16,7 +16,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let items of Delegaciones; let i = index" class="text-center">
+            <tr *ngFor="let items of dataDelegaciones; let i = index" class="text-center">
                 <ng-container *ngIf="editingRow !== i; else editFields">
                     <td>{{ items.rnc_delegado }}</td>
                     <td [ngStyle]="{ 'color': items.firmanteAutorizado === '✓' ? 'green' : 'red' }">{{ items.firmanteAutorizado }}</td>

@@ -13,16 +13,14 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <!-- <td></td> -->
-                <!-- <td [ngStyle]="{ 'color': item.estado === 'Disponible' ? 'green' : 'red' }">{{ item.estado }}</td> -->
-                <!-- <td>{{ item.fecha_inicio_operacion }}</td> -->
-                <!-- <td>
-                    <img width="30" height="30" 
-                    [ngClass]="items.btn === 'Remover' ? 'remove-image' : 'enable-image'"
-                    [src]="items.btn === 'Remover' ? 'assets/img/error.svg' : 'assets/img/correct.svg'"
-                    (click)="changeStatus(i)" alt="Cambiar Estado">
-                </td> -->
+            <tr *ngFor="let item of dataMarcas">
+                <td>{{ item.tipo }}</td>
+                <td [ngStyle]="{ 'color': item.estado === 'Disponible' ? 'green' : 'red' }">{{ item.estado }}</td>
+                <td>{{ item.fecha_inicio_operacion }}</td>
+                <td>
+                    <img *ngIf="item.estado === 'Disponible'" (click)="cambiarEstado(item)" width="30" height="30" src="assets/img/error.svg">
+                    <img *ngIf="item.estado === 'No disponible'" (click)="cambiarEstado(item)" width="30" height="30" src="assets/img/correct.svg">
+                </td>
             </tr>
         </tbody>
     </table>

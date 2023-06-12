@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DelegacionesService } from './delegaciones.service';
 
 @Component({
@@ -8,7 +8,8 @@ import { DelegacionesService } from './delegaciones.service';
 })
 export class DelegacionesComponent implements OnInit {
 
-  public Delegaciones: any = [];
+  // public Delegaciones: any = [];
+  @Input() dataDelegaciones: any[];
 
   constructor( private getServices: DelegacionesService){}
 
@@ -61,7 +62,7 @@ export class DelegacionesComponent implements OnInit {
 
   startEditing(index: number) {
     this.editingRow = index;
-    this.originalData[index] = { ...this.Delegaciones[index] };
+    this.originalData[index] = { ...this.dataDelegaciones[index] };
   }
 
   saveChanges(){
@@ -69,7 +70,7 @@ export class DelegacionesComponent implements OnInit {
   }
 
   cancelEditing() {
-    this.Delegaciones[this.editingRow] = { ...this.originalData[this.editingRow] };
+    this.dataDelegaciones[this.editingRow] = { ...this.originalData[this.editingRow] };
     this.editingRow = -1;
   }
 

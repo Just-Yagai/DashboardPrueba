@@ -1,7 +1,7 @@
 {
   "datosDelegaciones": [
     {
-      "rnc_delegado": "00199999996",
+      "rnc_delegado": "001",
       "firmanteAutorizado": null,
       "solicitanteAutorizado": null,
       "aprobadorComercial": null,
@@ -9,10 +9,12 @@
       "estado": "Activo",
       "identificacion": "40212599253",
       "fechaRegistro": "15/01/2023",
-      "fechaActualizacion": "23/09/2025"
+      "fechaActualizacion": "23/09/2025",
+      "AmbienteID": 1,
+      "CanalID": 1
     },
     {
-      "rnc_delegado": "00188888886",
+      "rnc_delegado": "002",
       "firmanteAutorizado": null,
       "solicitanteAutorizado": null,
       "aprobadorComercial": null,
@@ -20,7 +22,9 @@
       "estado": "Inactivo",
       "identificacion": "40253689562",
       "fechaRegistro": "14/05/2023",
-      "fechaActualizacion": "12/05/2023"
+      "fechaActualizacion": "12/05/2023",
+      "AmbienteID": 2,
+      "CanalID": 2
     }
   ]
 }
