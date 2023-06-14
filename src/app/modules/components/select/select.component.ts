@@ -1,10 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AmbienteService } from './services/ambiente.service';
 import { CanalService } from './services/canal.service';
-import { RespAmbiente } from 'src/app/core/interface/ambiente.interface';
-import { RespCanal } from 'src/app/core/interface/canal.interface';
-import { MarcasService } from '../marcas/marcas.service';
-import { DelegacionesService } from '../delegaciones/delegaciones.service';
+import { MarcasService } from '../../../services/marcas.service';
+import { DelegacionesService } from '../../../services/delegaciones.service';
 
 @Component({
   selector: 'app-select',
@@ -19,8 +17,8 @@ export class SelectComponent implements OnInit {
   @Input() tablaSecuencias: boolean;
   @Input() tablaRNC: boolean;
   
-  dataAmbientes: RespAmbiente[] = [];
-  dataCanal: RespCanal[] = [];
+  // dataAmbientes: RespAmbiente[] = [];
+  // dataCanal: RespCanal[] = [];
 
   dataMarcas: any[] = [];
   dataDelegaciones: any[] = [];

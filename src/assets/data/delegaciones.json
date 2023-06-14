@@ -1,7 +1,7 @@
 {
   "datosDelegaciones": [
     {
-      "rnc_delegado": "001",
+      "rnc": "001",
       "firmanteAutorizado": null,
       "solicitanteAutorizado": null,
       "aprobadorComercial": null,
@@ -14,7 +14,7 @@
       "CanalID": 1
     },
     {
-      "rnc_delegado": "002",
+      "rnc": "002",
       "firmanteAutorizado": null,
       "solicitanteAutorizado": null,
       "aprobadorComercial": null,

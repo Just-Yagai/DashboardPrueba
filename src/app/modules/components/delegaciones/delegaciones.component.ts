@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DelegacionesService } from './delegaciones.service';
+import { DelegacionesService } from '../../../services/delegaciones.service';
 
 @Component({
   selector: 'app-delegaciones',

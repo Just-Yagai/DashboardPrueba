@@ -1,7 +1,6 @@
 import { Component, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { DashboardService } from './dashboard.service';
+import { DashboardService } from '../../../services/dashboard.service';
 import Swal from 'sweetalert2';
-import { SelectComponent } from '../../components/select/select.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,12 +9,18 @@ import { SelectComponent } from '../../components/select/select.component';
 })
 export class DashboardComponent implements OnInit {
 
-  rnc!: string;
-  razonSocial!: string;
+  rnc: string;
+  razonSocial: string;
   tipoCertificacion: any = [];
-  selectedTipoCertificacion!: string | null;
+  selectedTipoCertificacion: string | null;
   isSelectDisabled: boolean = true;
   datosTipo: any = [];
+
+  datos: any[] = [];
+
+
+
+  // datos: Marcas[] = [] && prueba[] = [];
   
   // @Input() filterMarcas: 
 
@@ -97,63 +102,6 @@ export class DashboardComponent implements OnInit {
       allowEscapeKey: false
     });
   }
-  
-  // buscarRNC(): void {
-  //     if (!this.rnc) {
-  //       Swal.fire({
-  //         icon: 'question',
-  //         text: 'Aún no se ha introducido el RNC.',
-  //         allowOutsideClick: false, 
-  //         allowEscapeKey: false
-  //       });
-  //       return;
-  //     }
-  
-  //   this.getDashboard.getRNC(this.rnc).subscribe((data) => {
-  //     if (data) {
-  //       this.razonSocial = data.razonSocial;
-  //       this.tipoCertificacion = data.tipo_certificacion;
-  //       this.isSelectDisabled = false;
-  
-  //       const tipoEmisor = this.tipoCertificacion.find((tipo: any) => tipo.tipo === 'Emisor');
-  //       const tipoProveedor = this.tipoCertificacion.find((tipo: any) => tipo.tipo === 'Proveedor');
-  
-  //       Swal.fire({
-  //         icon: 'success',
-  //         title: 'Success',
-  //         text: 'El RNC ha sido ingresado correctamente.',
-  //         timer: 1000,
-  //         timerProgressBar: true,
-  //         showConfirmButton: false,
-  //         allowOutsideClick: false, 
-  //         allowEscapeKey: false
-  //       });
-
-  //       this.selectedTipoCertificacion = tipoEmisor ? 'Emisor' : tipoProveedor ? 'Proveedor' : null;
-  //       const tipoSeleccionado = tipoEmisor || tipoProveedor;
-  //       this.datosTipo.estado = tipoSeleccionado ? tipoSeleccionado.estado : '';
-  //       this.datosTipo.inicio_postulacion = tipoSeleccionado ? tipoSeleccionado.inicio_postulacion : '';
-  //       this.datosTipo.finalizacion_postulacion = tipoSeleccionado ? tipoSeleccionado.finalizacion_postulacion : '';
-        
-  //     } else {
-  //       this.rnc = '';
-  //       this.razonSocial = '';
-  //       this.tipoCertificacion = [];
-  //       this.isSelectDisabled = true;
-  
-  //       Swal.fire({
-  //         icon: 'error',
-  //         title: 'Error',
-  //         text: 'Se ha ingresado un RNC inválido.',
-  //         timer: 1000,
-  //         timerProgressBar: true,
-  //         showConfirmButton: false,
-  //         allowOutsideClick: false, 
-  //         allowEscapeKey: false
-  //       });
-  //     }
-  //   });
-  // }
 
   getDatosTipoCertificacion() {
     this.datosTipo = this.tipoCertificacion.find(

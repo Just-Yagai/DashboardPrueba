@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SecuenciasService } from './secuencias.service';
+import { SecuenciasService } from '../../../services/secuencias.service';
 
 
 @Component({

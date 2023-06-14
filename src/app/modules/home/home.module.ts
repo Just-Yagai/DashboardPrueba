@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { MarcasService } from '../components/marcas/marcas.service';
+import { MarcasService } from '../../services/marcas.service';
 
 @NgModule({
   declarations: [

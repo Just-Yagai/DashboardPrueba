@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MarcasService } from './marcas.service';
-import { RespMarca } from 'src/app/core/interface/marca.interface';
+import { MarcasService } from '../../../services/marcas.service';
 
 @Component({
   selector: 'app-marcas',
@@ -9,13 +8,15 @@ import { RespMarca } from 'src/app/core/interface/marca.interface';
 })
 export class MarcasComponent implements OnInit {
 
-  // dataMarcas: any = [];
+ public dataMarcas2: any[];
 
   @Input() dataMarcas: any[];
 
   constructor( private getMarcasServices: MarcasService){}
 
-  ngOnInit() {}
+  ngOnInit() {
+    // this.obtenerM();
+  }
 
   cambiarEstado(marca: any) {
     if (marca.estado === 'Disponible') {
@@ -29,6 +30,14 @@ export class MarcasComponent implements OnInit {
         console.log(resp);
       });
   }
+
+  // obtenerM(){
+  //   this.getMarcasServices.getMarcas()
+  //       .subscribe(resp => {
+  //         this.dataMarcas2 = resp;
+  //         console.log(resp);
+  //       });
+  // }
 
   // obtenerPorRNC(){
   //   const rnc = '001';
