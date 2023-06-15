@@ -1,8 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AmbienteService } from './services/ambiente.service';
 import { CanalService } from './services/canal.service';
-import { MarcasService } from '../../../services/marcas.service';
-import { DelegacionesService } from '../../../services/delegaciones.service';
+
 
 @Component({
   selector: 'app-select',
@@ -12,86 +11,41 @@ import { DelegacionesService } from '../../../services/delegaciones.service';
 export class SelectComponent implements OnInit {
 
   @Input() e_CF: boolean;
-  @Input() tablaMarcas: boolean;
-  @Input() tablaDelegaciones: boolean;
-  @Input() tablaSecuencias: boolean;
-  @Input() tablaRNC: boolean;
-  
-  // dataAmbientes: RespAmbiente[] = [];
-  // dataCanal: RespCanal[] = [];
+  @Input() selectAmbiente: any[];
+  @Input() selectCanal: any[];
+  @Input() SelectDisabled: boolean;
 
-  dataMarcas: any[] = [];
-  dataDelegaciones: any[] = [];
+  // datosAmbientes: any[] = [];
+  // datosCanal: any[];
 
-  selectedAmbiente: number;
-  selectedCanal: number;
+  ambienteID: number;
+  canalID: number;
 
-  filteredMarcas: any[];
-  filteredDelegaciones: any[];
-  
-  constructor( 
-    private getMarcasServices: MarcasService,
-    private getDelegacionesServices: DelegacionesService) {
+  constructor(
+    private getAmbienteServices: AmbienteService,
+    private getCanalServices: CanalService
+    ) {
     this.e_CF = false;
-    // this.tablaMarcas = false;
   }
 
   ngOnInit() {
-    this.obtenerMarcas();
-    this.obtenerDelegaciones();
   }
 
-  obtenerMarcas(){
-    this.getMarcasServices.getMarcas()
-        .subscribe((data) => {
-          this.dataMarcas = data;
-        })
-  }
+  // ambiente = this.datosAmbientes.reduce(
+  //   (result, current) => result.some((c: any) => c === current.ambienteID) ? result : [...result, current.ambienteID], []
+  // );
 
-  obtenerDelegaciones(){
-    this.getDelegacionesServices.getDelegaciones()
-        .subscribe((data) => {
-          this.dataDelegaciones = data;
-        })
-  }
+  // obtenerAmbiente(){
+  //   this.getAmbienteServices.getAmbiente(this.ambienteID)
+  //       .subscribe((data) => {
+  //         this.datosAmbientes = data;
+  //       });
+  // }
 
-  onAmbienteChange(value: string) {
-    this.selectedAmbiente = parseInt(value);
-    this.filterMarcas();
-    this.filterDelegaciones();
-  }
-  
-  onCanalChange(value: string) {
-    this.selectedCanal = parseInt(value);
-    this.filterMarcas();
-    this.filterDelegaciones();
-  }
-
-  filterMarcas() {
-    if (this.selectedAmbiente && this.selectedCanal) {
-      let filteredMarcas = this.dataMarcas.filter((marca) => {
-        return (
-          marca.AmbienteID === this.selectedAmbiente && marca.CanalID === this.selectedCanal
-        );
-      });
-  
-      return filteredMarcas;
-    } else {
-      return [];
-    }
-  }    
-
-  filterDelegaciones() {
-    if (this.selectedAmbiente && this.selectedCanal) {
-      let filteredDelegaciones = this.dataDelegaciones.filter((delegaciones) => {
-        return (
-          delegaciones.AmbienteID === this.selectedAmbiente && delegaciones.CanalID === this.selectedCanal
-        );
-      });
-  
-      return filteredDelegaciones;
-    } else {
-      return [];
-    }
-  } 
+  // obtenerCanal(){
+  //   this.getCanalServices.getCanal(this.canalID)
+  //       .subscribe((data) => {
+  //         this.datosCanal = data;
+  //       });
+  // }
 }

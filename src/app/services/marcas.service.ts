@@ -8,56 +8,24 @@ import { Observable, filter, map } from 'rxjs';
 })
 export class MarcasService {
 
-  public data: any[];
-
   constructor(private http: HttpClient) { }
 
-  // getMarcas(): Observable<any> {
-  //   return this.http.get<ResponseMarcas>('assets/data/marcas.json');
-  // }
+  getMarcas(rnc: string, ambienteID: number, canalID: number): Observable<any> {
+    return this.http.get<any>('assets/data/marcas.json').pipe(
+      map(data => data.filter((item: { rnc: string; ambienteID: number; canalID: number}) => item.rnc === rnc &&
+      item.ambienteID === ambienteID &&
+      item.canalID === canalID))
+    );
+  }
 
-  // getMarcas(AmbienteID: number, canalID: number): Observable<any> {
-  //   return this.http.get<ResponseMarcas>('assets/data/marcas.json')
-  //               .pipe(
-  //                 map( resp => {
-  //                   return resp.DataMarcas.filter( data => {
-  //                     return new MarcasModels
-  //                     ( 
-  //                       data.rnc, 
-  //                       data.tipo, 
-  //                       data.estado, 
-  //                       data.fecha_inicio_operacion, 
-  //                       data.AmbienteID, 
-  //                       data.CanalID
-  //                     )
-  //                   })
-  //                 })
-  //               )
-  // }
-
-  // getMarcas() {
-  //   return this.http.get<ResponseMarcas>('assets/data/marcas.json')
-  //               .pipe(
-  //                 map( resp => {
-  //                   return resp.DataMarcas;
-  //                 })
-  //               )
+  // getMarcas(rnc: string): Observable<any> {
+  //   return this.http.get<any>('assets/data/marcas.json').pipe(
+  //     map(data => data.filter((item: { rnc: string; }) => item.rnc === rnc ))
+  //   );
   // }
 
   actualizarMarca(marca: any): Observable<any> {
     const url = 'assets/json/marcas.json';
     return this.http.put(url, marca);
-  }
-
-  getMarcasPorID(ambienteID: number, canalID: number, rnc: string): Observable<any[]> {
-    return this.http.get<any[]>('assets/data/marcas.json').pipe(
-      map(marcas => marcas.filter(marca => marca.AmbienteID === ambienteID && marca.CanalID === canalID && marca.rnc === rnc))
-    );
-  }
-
-  getMarcasPorRNC(rnc: string): Observable<any[]> {
-    return this.http.get<any[]>('assets/data/marcas.json').pipe(
-      map(marcas => marcas.filter(marca => marca.rnc === rnc))
-    );
   }
 } 

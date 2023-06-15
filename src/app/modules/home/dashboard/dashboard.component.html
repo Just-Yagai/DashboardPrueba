@@ -140,11 +140,11 @@
                 id="marcas-tab-pane" role="tabpanel" 
                 aria-labelledby="marcas-tab" 
                 tabindex="0">
-                <app-select [tablaMarcas]="true"
-                            [tablaDelegaciones]="false"
-                            [tablaSecuencias]="false"
-                            [tablaRNC]="false"></app-select>
-                <!-- <app-marcas [dataMarcas]="usarFilterMarcas()"></app-marcas> -->
+                <app-select [selectAmbiente]="datosAmbientes"
+                            [selectCanal]="datosCanal"
+                            [SelectDisabled]="isSelectDisabled">
+                </app-select>
+                <app-marcas [Marcas]="datosMarcas"></app-marcas>
             </div>
             <!-- Delegaciones -->
             <div class="tab-pane fade" 
@@ -152,11 +152,10 @@
                 role="tabpanel" 
                 aria-labelledby="delegaciones-tab" 
                 tabindex="0">
-                <app-select [tablaMarcas]="false"
-                            [tablaDelegaciones]="true"
-                            [tablaSecuencias]="false"
-                            [tablaRNC]="false"></app-select>
-                <!-- <app-delegaciones></app-delegaciones> -->
+                <app-select [selectAmbiente]="datosAmbientes"
+                            [selectCanal]="datosCanal">
+                </app-select>
+                <app-delegaciones></app-delegaciones>
             </div>
             <!-- Secuencias -->
             <div class="tab-pane fade" 
@@ -164,12 +163,10 @@
                 role="tabpanel" 
                 aria-labelledby="secuencias-tab" 
                 tabindex="0">
-                <app-select [e_CF]="true"
-                            [tablaMarcas]="false"
-                            [tablaDelegaciones]="false"
-                            [tablaSecuencias]="true"
-                            [tablaRNC]="false"></app-select>
-                <!-- <app-secuencias></app-secuencias> -->
+                <app-select [selectAmbiente]="datosAmbientes"
+                            [selectCanal]="datosCanal">
+                </app-select>
+                <app-secuencias></app-secuencias>
             </div>
             <!-- Rnc Estado -->
             <div class="tab-pane fade" 
@@ -177,11 +174,10 @@
                 role="tabpanel" 
                 aria-labelledby="rncEstado-tab" 
                 tabindex="0">
-                <app-select [tablaMarcas]="false"
-                            [tablaDelegaciones]="false"
-                            [tablaSecuencias]="false"
-                            [tablaRNC]="true"></app-select>
-                <!-- <app-rnc-estado></app-rnc-estado> -->
+                <app-select [selectAmbiente]="datosAmbientes"
+                            [selectCanal]="datosCanal">
+                </app-select>
+                <app-rnc-estado></app-rnc-estado>
             </div>
             <!-- End -->
         </div>

@@ -10,7 +10,6 @@ import { RncEstadoComponent } from '../components/rnc-estado/rnc-estado.componen
 import { SelectComponent } from '../components/select/select.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { HeaderComponent } from 'src/app/shared/header/header.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { MarcasService } from '../../services/marcas.service';
 

@@ -7,8 +7,6 @@ import { Observable, map } from 'rxjs';
 })
 export class DashboardService {
 
-  // private datosURL = 'assets/data/datos.json'
-
   constructor( private http: HttpClient ) { }
   
   getRNC(rnc: string): Observable<any> {

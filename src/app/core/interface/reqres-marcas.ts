@@ -1,4 +1,4 @@
-import { MarcasModels } from "../models/marcas";
+import { MarcasModels } from "../models/modelsGeneral";
 
 export interface ResponseMarcas {
     DataMarcas: InterfaceMarcas[];

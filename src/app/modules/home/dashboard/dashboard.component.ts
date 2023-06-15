@@ -1,6 +1,13 @@
 import { Component, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { DashboardService } from '../../../services/dashboard.service';
 import Swal from 'sweetalert2';
+import { MarcasService } from 'src/app/services/marcas.service';
+import { DelegacionesService } from 'src/app/services/delegaciones.service';
+import { SecuenciasService } from 'src/app/services/secuencias.service';
+import { RncService } from 'src/app/services/rnc.service';
+import { ModelsGeneral } from 'src/app/core';
+import { AmbienteService } from '../../components/select/services/ambiente.service';
+import { CanalService } from '../../components/select/services/canal.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,20 +23,28 @@ export class DashboardComponent implements OnInit {
   isSelectDisabled: boolean = true;
   datosTipo: any = [];
 
-  datos: any[] = [];
+  // Marcas
+  datosMarcas: ModelsGeneral[];
+  ambienteID: number;
+  canalID: number;
 
+  // Select Option
+  datosAmbientes: any[];
+  datosCanal: any[];
 
-
-  // datos: Marcas[] = [] && prueba[] = [];
-  
-  // @Input() filterMarcas: 
-
-  constructor(private getDashboard: DashboardService) {
-  }
+  constructor(
+    private getDashboard: DashboardService,
+    private getMarcasServices: MarcasService,
+    private getDelegacionesServices: DelegacionesService,
+    private getSecuenciasServices: SecuenciasService,
+    private getRncEstadoServices: RncService,
+    private getAmbienteServices: AmbienteService,
+    private getCanalServices: CanalService
+    ) {}
 
   ngOnInit() {}
 
-  buscarRNC(): void {
+  buscarRNC() {
     if (!this.rnc) {
       this.rncNoIntroducido();
       return;
@@ -39,14 +54,49 @@ export class DashboardComponent implements OnInit {
       if (data) {
         this.actualizarDatosRNCValidos(data);
         this.RNCValido();
+        this.obtenerMarcas();
+        this.obtenerAmbiente();
+        this.obtenerCanal();
       } else {
         this.actualizarDatosRNCInvalidos();
         this.RNCInvalido();
       }
     });
   }
+
+  // obtenerMarcas(){
+  //   this.getMarcasServices.getMarcas(this.rnc)
+  //   .subscribe((data) => {
+  //       this.datosMarcas = data;
+  //       console.log(data);
+  //   });
+  // }
+
+  obtenerMarcas(){
+    this.getMarcasServices.getMarcas(this.rnc, this.ambienteID, this.canalID)
+        .subscribe((data) => {
+          this.datosMarcas = data;
+          console.log(data);
+    });
+  }
+
+  obtenerAmbiente(){
+    this.getAmbienteServices.getAmbiente(this.ambienteID)
+        .subscribe((data) => {
+          this.datosAmbientes = data;
+          // console.log(data);
+        });
+  }
+
+  obtenerCanal(){
+    this.getCanalServices.getCanal(this.canalID)
+        .subscribe((data) => {
+          this.datosCanal = data;
+          // console.log(data);
+        });
+  }
   
-  rncNoIntroducido(): void {
+  rncNoIntroducido() {
     Swal.fire({
       icon: 'question',
       text: 'Aún no se ha introducido el RNC.',
@@ -55,7 +105,7 @@ export class DashboardComponent implements OnInit {
     });
   }
   
-  actualizarDatosRNCValidos(data: any): void {
+  actualizarDatosRNCValidos(data: any) {
     this.razonSocial = data.razonSocial;
     this.tipoCertificacion = data.tipo_certificacion;
     this.isSelectDisabled = false;
@@ -70,7 +120,7 @@ export class DashboardComponent implements OnInit {
     this.datosTipo.finalizacion_postulacion = tipoSeleccionado ? tipoSeleccionado.finalizacion_postulacion : '';
   }
   
-  RNCValido(): void {
+  RNCValido() {
     Swal.fire({
       icon: 'success',
       title: 'Success',
@@ -83,14 +133,16 @@ export class DashboardComponent implements OnInit {
     });
   }
   
-  actualizarDatosRNCInvalidos(): void {
+  actualizarDatosRNCInvalidos() {
     this.rnc = '';
     this.razonSocial = '';
     this.tipoCertificacion = [];
+    this.datosTipo = [];
     this.isSelectDisabled = true;
+    this.datosMarcas = [];
   }
   
-  RNCInvalido(): void {
+  RNCInvalido() {
     Swal.fire({
       icon: 'error',
       title: 'Error',
@@ -119,6 +171,9 @@ export class DashboardComponent implements OnInit {
       this.datosTipo.estado = '';
       this.datosTipo.inicio_postulacion = '';
       this.datosTipo.finalizacion_postulacion = '';
+      this.datosMarcas = [];
+      this.datosAmbientes = [];
+      this.datosCanal = [];
     }
   } 
 }
