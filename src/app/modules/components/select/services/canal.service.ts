@@ -13,9 +13,9 @@ export class CanalService {
   //   return this.http.get('assets/data/canal.json');
   // }
 
-  getCanal(canalID: number): Observable<any> {
+  getCanal(id: number): Observable<any> {
     return this.http.get<any>('assets/data/canal.json').pipe(
-      map(data => data.filter((item: { canalID: number; }) => item.canalID === canalID))
+      map(data => data.filter((item: { id: number; }) => item.id === id))
     )
   }
 }

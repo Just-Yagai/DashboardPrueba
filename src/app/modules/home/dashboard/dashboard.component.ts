@@ -5,7 +5,7 @@ import { MarcasService } from 'src/app/services/marcas.service';
 import { DelegacionesService } from 'src/app/services/delegaciones.service';
 import { SecuenciasService } from 'src/app/services/secuencias.service';
 import { RncService } from 'src/app/services/rnc.service';
-import { ModelsGeneral } from 'src/app/core';
+import { ModelsFilter, ModelsGeneral } from 'src/app/core';
 import { AmbienteService } from '../../components/select/services/ambiente.service';
 import { CanalService } from '../../components/select/services/canal.service';
 
@@ -29,8 +29,10 @@ export class DashboardComponent implements OnInit {
   canalID: number;
 
   // Select Option
-  datosAmbientes: any[];
-  datosCanal: any[];
+  datosAmbientes: ModelsFilter[];
+  datosCanal: ModelsFilter[];
+  id: number;
+  nombre: string;
 
   constructor(
     private getDashboard: DashboardService,
@@ -81,15 +83,15 @@ export class DashboardComponent implements OnInit {
   }
 
   obtenerAmbiente(){
-    this.getAmbienteServices.getAmbiente(this.ambienteID)
+    this.getAmbienteServices.getAmbiente(this.id)
         .subscribe((data) => {
           this.datosAmbientes = data;
-          // console.log(data);
+          console.log(data);
         });
   }
 
   obtenerCanal(){
-    this.getCanalServices.getCanal(this.canalID)
+    this.getCanalServices.getCanal(this.id)
         .subscribe((data) => {
           this.datosCanal = data;
           // console.log(data);

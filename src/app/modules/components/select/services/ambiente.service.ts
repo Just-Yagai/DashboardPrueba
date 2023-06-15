@@ -13,9 +13,9 @@ export class AmbienteService {
   //   return this.http.get('assets/data/ambiente.json');
   // }
 
-  getAmbiente(ambienteID: number): Observable<any> {
+  getAmbiente(id: number): Observable<any> {
     return this.http.get<any>('assets/data/ambiente.json').pipe(
-      map(data => data.filter((item: { ambienteID: number; }) => item.ambienteID === ambienteID))
+      map(data => data.filter((item: { id: number; }) => item.id === id))
     )
   }
 }
