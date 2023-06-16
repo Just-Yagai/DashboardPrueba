@@ -2,12 +2,16 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { ModelsFilter } from 'src/app/core';
 
 @Pipe({
-  name: 'filtrado'
+  name: 'filtradoID'
 })
+
 export class FiltradoPipe implements PipeTransform {
+  
+  transform(value: any[], ambienteID: string): any[] {
+    if (!ambienteID) {
+      return value;
+    }
 
-  transform(selectAmbiente: ModelsFilter, ...args: unknown[]): unknown {
-    return null;
+    return value.filter(item => item.ambienteID === ambienteID);
   }
-
 }

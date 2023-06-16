@@ -11,10 +11,9 @@ export class MarcasComponent implements OnInit {
 
   @Input() Marcas: any[];
 
-  constructor(private getMarcasServices: MarcasService){}
+  constructor(private getMarcasServices: MarcasService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   cambiarEstado(marca: any) {
     if (marca.estado === 'Disponible') {

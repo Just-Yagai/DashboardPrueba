@@ -23,8 +23,12 @@ export class DashboardComponent implements OnInit {
   isSelectDisabled: boolean = true;
   datosTipo: any = [];
 
-  // Marcas
+  // Datos: Marcas, Delegaciones
   datosMarcas: ModelsGeneral[];
+  datosDelegaciones: ModelsGeneral[];
+  datosSecuencias: ModelsGeneral[];
+  datosRncEstado: ModelsGeneral[];
+
   ambienteID: number;
   canalID: number;
 
@@ -59,6 +63,9 @@ export class DashboardComponent implements OnInit {
         this.obtenerMarcas();
         this.obtenerAmbiente();
         this.obtenerCanal();
+        this.obtenerDelegaciones();
+        this.obtenerSecuencias();
+        this.obtenerRncEstado();
       } else {
         this.actualizarDatosRNCInvalidos();
         this.RNCInvalido();
@@ -78,20 +85,44 @@ export class DashboardComponent implements OnInit {
     this.getMarcasServices.getMarcas(this.rnc, this.ambienteID, this.canalID)
         .subscribe((data) => {
           this.datosMarcas = data;
-          console.log(data);
+          // console.log(data);
     });
   }
 
+  obtenerDelegaciones(){
+    this.getDelegacionesServices.getDelegaciones(this.rnc, this.ambienteID, this.canalID)
+        .subscribe((data) => {
+          this.datosDelegaciones = data;
+          // console.log(data);
+        })
+  }
+
+  obtenerSecuencias(){
+    this.getSecuenciasServices.getSecuencias(this.rnc, this.ambienteID, this.canalID)
+        .subscribe((data) => {
+          this.datosSecuencias = data;
+          // console.log(data);
+        })
+  }
+
+  obtenerRncEstado(){
+    this.getRncEstadoServices.getRncEstado(this.rnc, this.ambienteID, this.canalID)
+        .subscribe((data) => {
+          this.datosRncEstado = data;
+          console.log(data);
+        })
+  }
+
   obtenerAmbiente(){
-    this.getAmbienteServices.getAmbiente(this.id)
+    this.getAmbienteServices.getAmbiente()
         .subscribe((data) => {
           this.datosAmbientes = data;
-          console.log(data);
+          // console.log(data);
         });
   }
 
   obtenerCanal(){
-    this.getCanalServices.getCanal(this.id)
+    this.getCanalServices.getCanal()
         .subscribe((data) => {
           this.datosCanal = data;
           // console.log(data);
@@ -142,6 +173,8 @@ export class DashboardComponent implements OnInit {
     this.datosTipo = [];
     this.isSelectDisabled = true;
     this.datosMarcas = [];
+    this.datosDelegaciones = [];
+    this.datosSecuencias = [];
   }
   
   RNCInvalido() {
@@ -174,6 +207,8 @@ export class DashboardComponent implements OnInit {
       this.datosTipo.inicio_postulacion = '';
       this.datosTipo.finalizacion_postulacion = '';
       this.datosMarcas = [];
+      this.datosDelegaciones = [];
+      this.datosSecuencias = [];
       this.datosAmbientes = [];
       this.datosCanal = [];
     }

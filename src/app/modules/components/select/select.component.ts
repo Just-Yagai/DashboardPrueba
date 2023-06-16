@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AmbienteService } from './services/ambiente.service';
 import { CanalService } from './services/canal.service';
 
@@ -15,37 +15,12 @@ export class SelectComponent implements OnInit {
   @Input() selectCanal: any[];
   @Input() SelectDisabled: boolean;
 
-  // datosAmbientes: any[] = [];
-  // datosCanal: any[];
-
   ambienteID: number;
   canalID: number;
 
-  constructor(
-    private getAmbienteServices: AmbienteService,
-    private getCanalServices: CanalService
-    ) {
+  constructor() {
     this.e_CF = false;
   }
 
-  ngOnInit() {
-  }
-
-  // ambiente = this.datosAmbientes.reduce(
-  //   (result, current) => result.some((c: any) => c === current.ambienteID) ? result : [...result, current.ambienteID], []
-  // );
-
-  // obtenerAmbiente(){
-  //   this.getAmbienteServices.getAmbiente(this.ambienteID)
-  //       .subscribe((data) => {
-  //         this.datosAmbientes = data;
-  //       });
-  // }
-
-  // obtenerCanal(){
-  //   this.getCanalServices.getCanal(this.canalID)
-  //       .subscribe((data) => {
-  //         this.datosCanal = data;
-  //       });
-  // }
+  ngOnInit() {}
 }

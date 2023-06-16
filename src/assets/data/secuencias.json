@@ -1,5 +1,6 @@
 [
   {
+    "rnc": "001",
     "e_CF": "Factura de Crédito Fiscal Electrónica (31)",
     "secuenciaDesde": "1",
     "secuenciaHasta": "3,000",
@@ -8,9 +9,12 @@
     "realizadoEmision": "Si",
     "fechaRegistro2": "13/05/2023",
     "fechaDesde": "14/05/2023",
-    "fechaHasta": "15/05/2023"
+    "fechaHasta": "15/05/2023",
+    "AmbienteID": 1,
+    "CanalID": 1
   },
   {
+    "rnc": "001",
     "e_CF": "Factura de Consumo Electrónica (32)",
     "secuenciaDesde": "1",
     "secuenciaHasta": "1,000",
@@ -19,9 +23,12 @@
     "realizadoEmision": "Si",
     "fechaRegistro2": "16/05/2023",
     "fechaDesde": "17/05/2023",
-    "fechaHasta": "18/05/2023"
+    "fechaHasta": "18/05/2023",
+    "AmbienteID": 1,
+    "CanalID": 1
   },
   {
+    "rnc": "001",
     "e_CF": "Nota de Débito Electrónica (33)",
     "secuenciaDesde": "1",
     "secuenciaHasta": "500",
@@ -30,9 +37,12 @@
     "realizadoEmision": "No",
     "fechaRegistro2": "19/05/2023",
     "fechaDesde": "20/05/2023",
-    "fechaHasta": "21/05/2023"
+    "fechaHasta": "21/05/2023",
+    "AmbienteID": 1,
+    "CanalID": 1
   },
   {
+    "rnc": "001",
     "e_CF": "Nota de Débito Electrónica (34)",
     "secuenciaDesde": "1",
     "secuenciaHasta": "500",
@@ -41,9 +51,12 @@
     "realizadoEmision": "No",
     "fechaRegistro2": "22/05/2023",
     "fechaDesde": "23/05/2023",
-    "fechaHasta": "24/05/2023"
+    "fechaHasta": "24/05/2023",
+    "AmbienteID": 1,
+    "CanalID": 1
   },
   {
+    "rnc": "001",
     "e_CF": "Compras Electrónico (41)",
     "secuenciaDesde": "N/A",
     "secuenciaHasta": "N/A",
@@ -52,9 +65,12 @@
     "realizadoEmision": "No",
     "fechaRegistro2": "25/05/2023",
     "fechaDesde": "26/05/2023",
-    "fechaHasta": "27/05/2023"
+    "fechaHasta": "27/05/2023",
+    "AmbienteID": 1,
+    "CanalID": 1
   },
   {
+    "rnc": "001",
     "e_CF": "Gastos Menores Electrónico (43)",
     "secuenciaDesde": "1",
     "secuenciaHasta": "200",
@@ -63,9 +79,12 @@
     "realizadoEmision": "Si",
     "fechaRegistro2": "28/05/2023",
     "fechaDesde": "29/05/2023",
-    "fechaHasta": "30/05/2023"
+    "fechaHasta": "30/05/2023",
+    "AmbienteID": 1,
+    "CanalID": 1
   },
   {
+    "rnc": "001",
     "e_CF": "Regímenes Especiales Electrónico (44)",
     "secuenciaDesde": "N/A",
     "secuenciaHasta": "N/A",
@@ -74,9 +93,12 @@
     "realizadoEmision": "No",
     "fechaRegistro2": "31/05/2023",
     "fechaDesde": "01/06/2023",
-    "fechaHasta": "02/06/2023"
+    "fechaHasta": "02/06/2023",
+    "AmbienteID": 1,
+    "CanalID": 1
   },
   {
+    "rnc": "001",
     "e_CF": "Gubernamental Electrónico (45)",
     "secuenciaDesde": "1",
     "secuenciaHasta": "300",
@@ -85,9 +107,12 @@
     "realizadoEmision": "No",
     "fechaRegistro2": "03/06/2023",
     "fechaDesde": "04/06/2023",
-    "fechaHasta": "05/06/2023"
+    "fechaHasta": "05/06/2023",
+    "AmbienteID": 1,
+    "CanalID": 1
   },
   {
+    "rnc": "001",
     "e_CF": "Comprobante de Exportaciones Electrónico (46)",
     "secuenciaDesde": "N/A",
     "secuenciaHasta": "N/A",
@@ -96,9 +121,12 @@
     "realizadoEmision": "No",
     "fechaRegistro2": "06/06/2023",
     "fechaDesde": "07/06/2023",
-    "fechaHasta": "08/06/2023"
+    "fechaHasta": "08/06/2023",
+    "AmbienteID": 1,
+    "CanalID": 1
   },
   {
+    "rnc": "001",
     "e_CF": "Comprobante para Pagos al Exterior Electrónico (47)",
     "secuenciaDesde": "N/A",
     "secuenciaHasta": "N/A",
@@ -107,6 +135,8 @@
     "realizadoEmision": "No",
     "fechaRegistro2": "09/06/2023",
     "fechaDesde": "10/06/2023",
-    "fechaHasta": "11/06/2023"
+    "fechaHasta": "11/06/2023",
+    "AmbienteID": 1,
+    "CanalID": 1
   }
 ]

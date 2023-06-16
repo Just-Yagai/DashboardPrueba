@@ -16,9 +16,9 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let items of dataDelegaciones; let i = index" class="text-center">
+            <tr *ngFor="let items of Delegaciones; let i = index" class="text-center">
                 <ng-container *ngIf="editingRow !== i; else editFields">
-                    <td>{{ items.rnc_delegado }}</td>
+                    <td>{{ items.rnc }}</td>
                     <td [ngStyle]="{ 'color': items.firmanteAutorizado === '✓' ? 'green' : 'red' }">{{ items.firmanteAutorizado }}</td>
                     <td [ngStyle]="{ 'color': items.solicitanteAutorizado === '✓' ? 'green' : 'red' }">{{ items.solicitanteAutorizado }}</td>
                     <td [ngStyle]="{ 'color': items.aprobadorComercial === '✓' ? 'green' : 'red' }">{{ items.aprobadorComercial }}</td>
@@ -26,7 +26,7 @@
                     <td [ngStyle]="{ 'color': items.estado === 'Activo' ? 'green' : 'red' }">{{ items.estado }}</td>
                     <td>
                         <button (click)="startEditing(i)" class="btn"><img width="30" height="30" src="assets/img/edit.svg"></button>
-                        <button (click)="setRncModal(items.rnc_delegado);
+                        <button (click)="setRncModal(items.rnc);
                                         setFechaRegistro(items.fechaRegistro);
                                         setFechaActualizacion(items.fechaActualizacion);
                                         setIdentificacion(items.identificacion)"
@@ -38,7 +38,7 @@
                 </ng-container>
                 <ng-template #editFields>
                     <td>
-                        <label>{{ items.rnc_delegado }}</label>
+                        <label>{{ items.rnc }}</label>
                     </td>
                     <td>
                         <div class="btn-group">

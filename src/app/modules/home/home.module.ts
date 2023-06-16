@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { MarcasService } from '../../services/marcas.service';
+import { FiltradoPipe } from 'src/app/shared/pipe/filtrado.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MarcasService } from '../../services/marcas.service';
     DelegacionesComponent,
     SecuenciasComponent,
     RncEstadoComponent,
-    SelectComponent
+    SelectComponent,
+    FiltradoPipe
   ],
   imports: [
     CommonModule,

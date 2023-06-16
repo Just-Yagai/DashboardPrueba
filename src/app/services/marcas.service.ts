@@ -1,14 +1,22 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, filter, map } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Observable, catchError, filter, map } from 'rxjs';
+import { Employee } from '../shared/Employee';
 // import { MarcasModels, ResponseMarcas } from '../core';
-
+import { retry } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
 export class MarcasService {
+  apiURL: any;
 
   constructor(private http: HttpClient) { }
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
+  };
 
   getMarcas(rnc: string, ambienteID: number, canalID: number): Observable<any> {
     return this.http.get<any>('assets/data/marcas.json').pipe(
@@ -25,7 +33,18 @@ export class MarcasService {
   // }
 
   actualizarMarca(marca: any): Observable<any> {
-    const url = 'assets/json/marcas.json';
+    const url = 'assets/data/marcas.json';
     return this.http.put(url, marca);
   }
+
+  update(rnc: any, employee: any): Observable<Employee>{
+    const apiURL = 'assets/data/marcas.json';
+    return this.http
+      .put<Employee>(
+        this.apiURL + rnc,
+        JSON.stringify(employee),
+        this.httpOptions
+      )
+  }
+
 } 

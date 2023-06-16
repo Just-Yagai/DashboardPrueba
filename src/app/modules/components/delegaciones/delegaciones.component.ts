@@ -8,10 +8,9 @@ import { DelegacionesService } from '../../../services/delegaciones.service';
 })
 export class DelegacionesComponent implements OnInit {
 
-  // public Delegaciones: any = [];
-  @Input() dataDelegaciones: any[];
+  @Input() Delegaciones: any[];
 
-  constructor( private getServices: DelegacionesService){}
+  constructor(private getServices: DelegacionesService){}
 
   ngOnInit(){}
 
@@ -62,7 +61,7 @@ export class DelegacionesComponent implements OnInit {
 
   startEditing(index: number) {
     this.editingRow = index;
-    this.originalData[index] = { ...this.dataDelegaciones[index] };
+    this.originalData[index] = { ...this.Delegaciones[index] };
   }
 
   saveChanges(){
@@ -70,7 +69,7 @@ export class DelegacionesComponent implements OnInit {
   }
 
   cancelEditing() {
-    this.dataDelegaciones[this.editingRow] = { ...this.originalData[this.editingRow] };
+    this.Delegaciones[this.editingRow] = { ...this.originalData[this.editingRow] };
     this.editingRow = -1;
   }
 
@@ -80,8 +79,8 @@ export class DelegacionesComponent implements OnInit {
   fechaActualizacionModal: string = '';
   identificacionModal: string = '';
 
-  setRncModal(rnc_delegado: string) {
-    this.rncModal = rnc_delegado;
+  setRncModal(rnc: string) {
+    this.rncModal = rnc;
   }
 
   setFechaRegistro(fechaRegistro: string) {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SecuenciasService } from '../../../services/secuencias.service';
 
 
@@ -9,7 +9,7 @@ import { SecuenciasService } from '../../../services/secuencias.service';
 })
 export class SecuenciasComponent implements OnInit {
 
-  public Secuencias: any = [];
+  @Input() Secuencias: any[];
 
   constructor( private getServices: SecuenciasService){}
 

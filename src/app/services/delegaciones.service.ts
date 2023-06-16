@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 
 @Injectable({
@@ -10,7 +10,13 @@ export class DelegacionesService {
 
   constructor( private http: HttpClient) { }
 
-  getDelegaciones(): Observable<any> {
-    return this.http.get('assets/data/delegaciones.json');
+  getDelegaciones(rnc: string, ambienteID: number, canalID: number): Observable<any> {
+    return this.http.get<any>('assets/data/delegaciones.json').pipe(
+      map(data => data.filter((item: { rnc: string; ambienteID: number; canalID: number }) => item.rnc === rnc && item.ambienteID === ambienteID && item.canalID === canalID))
+    );
   }
+
+  // getDelegaciones(): Observable<any> {
+  //   return this.http.get('assets/data/delegaciones.json');
+  // }
 }
