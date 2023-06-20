@@ -17,6 +17,14 @@
   },
   {
     "rnc": "001",
+    "tipo": "Facturador Gratuito",
+    "estado": "No disponible",
+    "fecha_inicio_operacion": "2023/05/14",
+    "AmbienteID": 1,
+    "CanalID": 1
+  },
+  {
+    "rnc": "001",
     "tipo": "Lorem ipsum dolor sit amet",
     "estado": "Disponible",
     "fecha_inicio_operacion": "2023/12/14",

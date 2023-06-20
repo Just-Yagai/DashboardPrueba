@@ -109,7 +109,7 @@ export class DashboardComponent implements OnInit {
     this.getRncEstadoServices.getRncEstado(this.rnc, this.ambienteID, this.canalID)
         .subscribe((data) => {
           this.datosRncEstado = data;
-          console.log(data);
+          // console.log(data);
         })
   }
 
@@ -213,4 +213,12 @@ export class DashboardComponent implements OnInit {
       this.datosCanal = [];
     }
   } 
+
+  actualizarDatosMarcas(datos: ModelsGeneral[]) {
+      this.datosMarcas = datos;
+  }
+
+  actualizarDatosDelegaciones(datos: ModelsGeneral[]) {
+    this.datosDelegaciones = datos;
+}
 }

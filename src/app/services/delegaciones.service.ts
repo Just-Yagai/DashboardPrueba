@@ -16,6 +16,10 @@ export class DelegacionesService {
     );
   }
 
+  getDelegacionesSelect(): Observable<any> {
+    return this.http.get<any>('assets/data/delegaciones.json');
+  }
+
   // getDelegaciones(): Observable<any> {
   //   return this.http.get('assets/data/delegaciones.json');
   // }

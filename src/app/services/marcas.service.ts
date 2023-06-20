@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, catchError, filter, map } from 'rxjs';
 import { Employee } from '../shared/Employee';
-// import { MarcasModels, ResponseMarcas } from '../core';
+import { ModelsGeneral } from '../core';
 import { retry } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
@@ -45,6 +45,18 @@ export class MarcasService {
         JSON.stringify(employee),
         this.httpOptions
       )
+  }
+
+  obtenerDatos(): Observable<any> {
+    return this.http.get<any>('assets/data/datos.json');
+  }
+
+  obtenerDatos2() {
+    return this.http.get('assets/data/datos.json');
+  }
+
+  getMarcasSelect(): Observable<any> {
+    return this.http.get<any>('assets/data/marcas.json');
   }
 
 } 

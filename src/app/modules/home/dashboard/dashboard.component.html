@@ -141,8 +141,8 @@
                 aria-labelledby="marcas-tab" 
                 tabindex="0">
                 <app-select [selectAmbiente]="datosAmbientes"
-                            [selectCanal]="datosCanal"
-                            [SelectDisabled]="isSelectDisabled">
+                            [SelectDisabled]="isSelectDisabled"
+                            (datosFiltradosMarcas)="actualizarDatosMarcas($event)">
                 </app-select>
                 <app-marcas [Marcas]="datosMarcas"></app-marcas>
             </div>
@@ -152,8 +152,7 @@
                 role="tabpanel" 
                 aria-labelledby="delegaciones-tab" 
                 tabindex="0">
-                <app-select [selectAmbiente]="datosAmbientes"
-                            [selectCanal]="datosCanal"
+                <app-select (datosFiltradosDelegaciones)="actualizarDatosDelegaciones($event)"
                             [SelectDisabled]="isSelectDisabled">
                 </app-select>
                 <app-delegaciones [Delegaciones]="datosDelegaciones"></app-delegaciones>
@@ -164,8 +163,7 @@
                 role="tabpanel" 
                 aria-labelledby="secuencias-tab" 
                 tabindex="0">
-                <app-select [selectAmbiente]="datosAmbientes"
-                            [selectCanal]="datosCanal"
+                <app-select
                             [SelectDisabled]="isSelectDisabled"
                             [e_CF]="true">
                 </app-select>
@@ -177,8 +175,7 @@
                 role="tabpanel" 
                 aria-labelledby="rncEstado-tab" 
                 tabindex="0">
-                <app-select [selectAmbiente]="datosAmbientes"
-                            [selectCanal]="datosCanal"
+                <app-select 
                             [SelectDisabled]="isSelectDisabled">
                 </app-select>
                 <app-rnc-estado [RncEstado]="datosRncEstado"></app-rnc-estado>

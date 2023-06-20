@@ -13,7 +13,7 @@ export class MarcasComponent implements OnInit {
 
   constructor(private getMarcasServices: MarcasService) { }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   cambiarEstado(marca: any) {
     if (marca.estado === 'Disponible') {

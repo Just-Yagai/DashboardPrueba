@@ -6,20 +6,32 @@
             <label class="col-form-label">Ambiente:</label>
         </div>
         <div class="col-lg">
-            <select class="form-select" [disabled]="SelectDisabled">
-                <!-- <option [ngValue]="undefined" disabled selected>Seleccionar...</option> -->
-                <option *ngFor="let items of selectAmbiente" [ngValue]="items">{{ items.nombre }}</option>                  
+            <select class="form-select" [disabled]="SelectDisabled" (change)="onAmbienteChange($any($event.target).value)">
+                <option disabled selected>Seleccionar...</option>
+                <option value="1">Produccion</option>
+                <option value="2">Precertificacion</option>
+                <option value="3">Certificacion</option>
             </select>
+            <!-- <select class="form-select" [disabled]="SelectDisabled">
+                <option [ngValue]="undefined" disabled selected>Seleccionar...</option>
+                <option *ngFor="let items of selectAmbiente" [ngValue]="items">{{ items.nombre }}</option>                  
+            </select> -->
         </div>
         <!-- Select Canal -->
         <div class="col-auto">
            <label class="col-form-label">Canal:</label> 
         </div>
         <div class="col-lg">
-            <select class="form-select" [disabled]="SelectDisabled">
-                <!-- <option [ngValue]="undefined" disabled selected>Seleccionar...</option> -->
-                <option *ngFor="let items of selectCanal" [ngValue]="items">{{ items.nombre }}</option>
+            <select class="form-select" [disabled]="SelectDisabled" (change)="onCanalChange($any($event.target).value)">
+                <option disabled selected>Seleccionar...</option>
+                <option value="1">B2B</option>
+                <option value="2">B2C</option>
+                <!-- <option *ngFor="let item of dataCanal" [value]="item.id">{{ item.nombre }}</option> -->
             </select>
+            <!-- <select class="form-select" [disabled]="SelectDisabled">
+                <option [ngValue]="undefined" disabled selected>Seleccionar...</option>
+                <option *ngFor="let items of selectCanal" [ngValue]="items">{{ items.nombre }}</option>
+            </select> -->
         </div>
         <!-- Select Tipo E-CF -->
         <div *ngIf="e_CF === true" class="col-auto">
