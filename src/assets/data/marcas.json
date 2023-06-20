@@ -9,9 +9,9 @@
   },
   {
     "rnc": "001",
-    "tipo": "Facturador Gratuito",
-    "estado": "No disponible",
-    "fecha_inicio_operacion": "2023/05/14",
+    "tipo": "dxfdfssfd Electrónico",
+    "estado": "Disponible",
+    "fecha_inicio_operacion": "2023/05/12",
     "AmbienteID": 1,
     "CanalID": 1
   },
@@ -20,12 +20,28 @@
     "tipo": "Facturador Gratuito",
     "estado": "No disponible",
     "fecha_inicio_operacion": "2023/05/14",
-    "AmbienteID": 1,
+    "AmbienteID": 3,
     "CanalID": 1
+  },
+  {
+    "rnc": "001",
+    "tipo": "Facturador Gratuito",
+    "estado": "No disponible",
+    "fecha_inicio_operacion": "2023/05/14",
+    "AmbienteID": 3,
+    "CanalID": 2
   },
   {
     "rnc": "001",
     "tipo": "Lorem ipsum dolor sit amet",
+    "estado": "Disponible",
+    "fecha_inicio_operacion": "2023/12/14",
+    "AmbienteID": 2,
+    "CanalID": 1
+  },
+  {
+    "rnc": "001",
+    "tipo": "1234ipsum dolor sit amet",
     "estado": "Disponible",
     "fecha_inicio_operacion": "2023/12/14",
     "AmbienteID": 2,
@@ -37,14 +53,14 @@
     "estado": "Disponible",
     "fecha_inicio_operacion": "2023/09/25",
     "AmbienteID": 2,
-    "CanalID": 2
+    "CanalID": 1
   },
   {
     "rnc": "002",
     "tipo": "Facturador",
     "estado": "Disponible",
     "fecha_inicio_operacion": "2023/05/12",
-    "AmbienteID": 3,
+    "AmbienteID": 2,
     "CanalID": 1
   },
   {

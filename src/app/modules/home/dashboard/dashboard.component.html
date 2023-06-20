@@ -141,6 +141,7 @@
                 aria-labelledby="marcas-tab" 
                 tabindex="0">
                 <app-select [selectAmbiente]="datosAmbientes"
+                            [selectCanal]="datosCanal"
                             [SelectDisabled]="isSelectDisabled"
                             (datosFiltradosMarcas)="actualizarDatosMarcas($event)">
                 </app-select>

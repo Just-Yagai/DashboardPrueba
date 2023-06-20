@@ -8,6 +8,7 @@ import { RncService } from 'src/app/services/rnc.service';
 import { ModelsFilter, ModelsGeneral } from 'src/app/core';
 import { AmbienteService } from '../../components/select/services/ambiente.service';
 import { CanalService } from '../../components/select/services/canal.service';
+import { SelectComponent } from '../../components/select/select.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,6 +16,8 @@ import { CanalService } from '../../components/select/services/canal.service';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
+
+  @ViewChild(SelectComponent) selectComponent: SelectComponent;
 
   rnc: string;
   razonSocial: string;
@@ -29,13 +32,13 @@ export class DashboardComponent implements OnInit {
   datosSecuencias: ModelsGeneral[];
   datosRncEstado: ModelsGeneral[];
 
-  ambienteID: number;
-  canalID: number;
+  ambienteID: 1;
+  canalID: 1;
 
   // Select Option
   datosAmbientes: ModelsFilter[];
   datosCanal: ModelsFilter[];
-  id: number;
+  id: string;
   nombre: string;
 
   constructor(
@@ -60,7 +63,8 @@ export class DashboardComponent implements OnInit {
       if (data) {
         this.actualizarDatosRNCValidos(data);
         this.RNCValido();
-        this.obtenerMarcas();
+        this.obtenerMarcas(this.rnc, this.ambienteID, this.canalID);
+        this.selectComponent.obtenerMarcasID();
         this.obtenerAmbiente();
         this.obtenerCanal();
         this.obtenerDelegaciones();
@@ -81,10 +85,14 @@ export class DashboardComponent implements OnInit {
   //   });
   // }
 
-  obtenerMarcas(){
-    this.getMarcasServices.getMarcas(this.rnc, this.ambienteID, this.canalID)
+  obtenerMarcas(rnc: string, ambienteID: number, canalID: number){
+    this.getMarcasServices.getMarcas(rnc, ambienteID, canalID)
         .subscribe((data) => {
           this.datosMarcas = data;
+          console.log(data);
+          // const resultado = data.filter((item: any) =>item.AmbienteID === 1 && item.CanalID === 1);
+          // this.datosMarcas = data;
+          // console.log(resultado);
           // console.log(data);
     });
   }
@@ -221,4 +229,5 @@ export class DashboardComponent implements OnInit {
   actualizarDatosDelegaciones(datos: ModelsGeneral[]) {
     this.datosDelegaciones = datos;
 }
+
 }

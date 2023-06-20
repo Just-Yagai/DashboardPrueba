@@ -3,6 +3,8 @@ export class ModelsGeneral {
     filter(arg0: (item: { rnc: string; ambienteID: number; canalID: number; }) => boolean): any {
       throw new Error('Method not implemented.');
     }
+
+    public marcas: modelMarcas[];
     constructor(
         public rnc: string,
         public tipo: string,
@@ -29,4 +31,8 @@ export class ModelsGeneral {
         public AmbienteID: number,
         public CanalID: number,
     ) {}    
+}
+
+export class modelMarcas{
+
 }

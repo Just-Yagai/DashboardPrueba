@@ -8,15 +8,8 @@ import { retry } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class MarcasService {
-  apiURL: any;
 
   constructor(private http: HttpClient) { }
-
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-    }),
-  };
 
   getMarcas(rnc: string, ambienteID: number, canalID: number): Observable<any> {
     return this.http.get<any>('assets/data/marcas.json').pipe(
@@ -37,26 +30,16 @@ export class MarcasService {
     return this.http.put(url, marca);
   }
 
-  update(rnc: any, employee: any): Observable<Employee>{
-    const apiURL = 'assets/data/marcas.json';
-    return this.http
-      .put<Employee>(
-        this.apiURL + rnc,
-        JSON.stringify(employee),
-        this.httpOptions
-      )
-  }
-
-  obtenerDatos(): Observable<any> {
-    return this.http.get<any>('assets/data/datos.json');
-  }
-
-  obtenerDatos2() {
-    return this.http.get('assets/data/datos.json');
-  }
-
   getMarcasSelect(): Observable<any> {
     return this.http.get<any>('assets/data/marcas.json');
   }
+
+  // getMarcasSelect(rnc: string, ambienteID: number, canalID: number): Observable<any> {
+  //   return this.http.get<any>('assets/data/marcas.json').pipe(
+  //     map(data => data.filter((item: { rnc: string; ambienteID: number; canalID: number}) => item.rnc === rnc &&
+  //     item.ambienteID === ambienteID &&
+  //     item.canalID === canalID))
+  //   );
+  // }
 
 } 

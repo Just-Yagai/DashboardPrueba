@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AmbienteService } from './services/ambiente.service';
 import { CanalService } from './services/canal.service';
-import { ModelsGeneral } from 'src/app/core';
+import { ModelsFilter, ModelsGeneral } from 'src/app/core';
 import { MarcasService } from 'src/app/services/marcas.service';
 import { DelegacionesService } from 'src/app/services/delegaciones.service';
 
@@ -14,18 +14,24 @@ import { DelegacionesService } from 'src/app/services/delegaciones.service';
 export class SelectComponent implements OnInit {
 
   @Input() e_CF: boolean;
-  @Input() selectAmbiente: any[];
-  // @Input() selectCanal: any[];
+  @Input() selectAmbiente: ModelsFilter[];
+  @Input() selectCanal: ModelsFilter[];
   @Input() SelectDisabled: boolean;
-  @Input() dataMarcas: ModelsGeneral[] = [];
+  // @Input() filterDataMarcas: ModelsGeneral[] = [];
 
   @Output() datosFiltradosMarcas = new EventEmitter<ModelsGeneral[]>();
   @Output() datosFiltradosDelegaciones = new EventEmitter<ModelsGeneral[]>();
+  // @Output() obtenerMarcasIDHijo: EventEmitter<void> = new EventEmitter<void>();
 
   pruebaMarcas: ModelsGeneral[] = [];
   pruebaDelegaciones: ModelsGeneral[] = [];
   ambienteID: number;
   canalID: number;
+  // id: ModelsFilter;
+  // rnc: string;
+  @Input() filterRNC: string;
+  @Input() filterAmbienteID: number;
+  @Input() filterCanalID: number;
 
   constructor(private getMarcasServices: MarcasService,
               private getDelegacionesServices: DelegacionesService) {
@@ -33,7 +39,7 @@ export class SelectComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.obtenerMarcasID();
+    // this.obtenerMarcasID();
     this.obtenerDelegacionesID();
   }
 
@@ -43,6 +49,7 @@ export class SelectComponent implements OnInit {
         this.pruebaMarcas = data;
       });
   }
+
   obtenerDelegacionesID() {
     this.getDelegacionesServices.getDelegacionesSelect()
       .subscribe((data) => {
@@ -54,7 +61,7 @@ export class SelectComponent implements OnInit {
     this.ambienteID = parseInt(value);
     this.filterMarcas();
     this.filterDelegaciones();
-;  }
+  }
   
   onCanalChange(value: string) {
     this.canalID = parseInt(value);
@@ -66,13 +73,14 @@ export class SelectComponent implements OnInit {
     let filteredMarcas: ModelsGeneral[] = [];
   
     if (this.ambienteID && this.canalID) {
-      filteredMarcas = this.pruebaMarcas.filter(marca => marca.AmbienteID === this.ambienteID && marca.CanalID === this.canalID);
+      filteredMarcas = this.pruebaMarcas.filter((marca: { AmbienteID: number; CanalID: number; }) => marca.AmbienteID === this.ambienteID && marca.CanalID === this.canalID);
     } else if (this.ambienteID) {
-      filteredMarcas = this.pruebaMarcas.filter(marca => marca.AmbienteID === this.ambienteID);
+      filteredMarcas = this.pruebaMarcas.filter((marca: { AmbienteID: number; }) => marca.AmbienteID === this.ambienteID);
     } else if (this.canalID) {
-      filteredMarcas = this.pruebaMarcas.filter(marca => marca.CanalID === this.canalID);
+      filteredMarcas = this.pruebaMarcas.filter((marca: { CanalID: number; }) => marca.CanalID === this.canalID);
     }
     this.datosFiltradosMarcas.emit(filteredMarcas);
+    console.log(filteredMarcas);
   }
 
   filterDelegaciones() {
