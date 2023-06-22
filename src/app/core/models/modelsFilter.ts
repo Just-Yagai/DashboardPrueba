@@ -1,6 +1,7 @@
-export class ModelsFilter {
-    constructor(
-        public id: number,
-        public nombre: string
-    ){}
+export class ModelFilter {
+    // rnc: string;
+    id: number;
+    nombre: string;
+    ambienteID: number;
+    canalID: number;
 }

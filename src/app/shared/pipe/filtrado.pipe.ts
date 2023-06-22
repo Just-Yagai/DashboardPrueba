@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ModelsFilter } from 'src/app/core';
+import { ModelFilter } from 'src/app/core';
 
 @Pipe({
   name: 'filtradoID'

@@ -140,8 +140,7 @@
                 id="marcas-tab-pane" role="tabpanel" 
                 aria-labelledby="marcas-tab" 
                 tabindex="0">
-                <app-select [selectAmbiente]="datosAmbientes"
-                            [selectCanal]="datosCanal"
+                <app-select
                             [SelectDisabled]="isSelectDisabled"
                             (datosFiltradosMarcas)="actualizarDatosMarcas($event)">
                 </app-select>
@@ -153,9 +152,9 @@
                 role="tabpanel" 
                 aria-labelledby="delegaciones-tab" 
                 tabindex="0">
-                <app-select (datosFiltradosDelegaciones)="actualizarDatosDelegaciones($event)"
+                <!-- <app-select (datosFiltradosDelegaciones)="actualizarDatosDelegaciones($event)"
                             [SelectDisabled]="isSelectDisabled">
-                </app-select>
+                </app-select> -->
                 <app-delegaciones [Delegaciones]="datosDelegaciones"></app-delegaciones>
             </div>
             <!-- Secuencias -->

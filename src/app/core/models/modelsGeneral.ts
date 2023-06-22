@@ -1,9 +1,7 @@
-export class ModelsGeneral {
-    push: any;
-    filter(arg0: (item: { rnc: string; ambienteID: number; canalID: number; }) => boolean): any {
-      throw new Error('Method not implemented.');
-    }
+import { modelDelegaciones } from "./delegaciones";
+import { modelMarcas } from "./marcas";
 
+export class ModelsGeneral {
     public marcas: modelMarcas[];
     constructor(
         public rnc: string,
@@ -33,6 +31,3 @@ export class ModelsGeneral {
     ) {}    
 }
 
-export class modelMarcas{
-
-}

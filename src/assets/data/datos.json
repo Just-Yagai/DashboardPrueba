@@ -4,14 +4,14 @@
     "razonSocial": "Actividades económicas del contribuyente",
     "tipo_certificacion": [
       {
-        "selected": "Seleccionar tipo...",
+
         "tipo": "Emisor",
         "estado": "Registrado",
         "inicio_postulacion": "10/07/2023",
         "finalizacion_postulacion": "11/10/2023"
       },
       {
-        "selected": "Seleccionar tipo...",
+
         "tipo": "Proveedor",
         "estado": "Registrado",
         "inicio_postulacion": "16/07/2023",

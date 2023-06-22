@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AmbienteService } from './services/ambiente.service';
 import { CanalService } from './services/canal.service';
-import { ModelsFilter, ModelsGeneral } from 'src/app/core';
+import { ModelFilter, ModelsGeneral } from 'src/app/core';
 import { MarcasService } from 'src/app/services/marcas.service';
 import { DelegacionesService } from 'src/app/services/delegaciones.service';
 
@@ -14,9 +14,11 @@ import { DelegacionesService } from 'src/app/services/delegaciones.service';
 export class SelectComponent implements OnInit {
 
   @Input() e_CF: boolean;
-  @Input() selectAmbiente: ModelsFilter[];
-  @Input() selectCanal: ModelsFilter[];
+  @Input() selectAmbiente: ModelFilter[];
+  @Input() selectCanal: ModelFilter[];
   @Input() SelectDisabled: boolean;
+  datosAmbientes: ModelFilter[];
+  datosCanal: ModelFilter[];
   // @Input() filterDataMarcas: ModelsGeneral[] = [];
 
   @Output() datosFiltradosMarcas = new EventEmitter<ModelsGeneral[]>();
@@ -34,13 +36,31 @@ export class SelectComponent implements OnInit {
   @Input() filterCanalID: number;
 
   constructor(private getMarcasServices: MarcasService,
-              private getDelegacionesServices: DelegacionesService) {
+              private getDelegacionesServices: DelegacionesService,
+              private getAmbienteServices: AmbienteService,
+              private getCanalServices: CanalService) {
     this.e_CF = false;
   }
 
   ngOnInit() {
     // this.obtenerMarcasID();
     this.obtenerDelegacionesID();
+  }
+
+  obtenerAmbiente(){
+    this.getAmbienteServices.getAmbiente()
+        .subscribe((data) => {
+          this.datosAmbientes = data;
+          // console.log(data);
+        });
+  }
+
+  obtenerCanal(){
+    this.getCanalServices.getCanal()
+        .subscribe((data) => {
+          this.datosCanal = data;
+          // console.log(data);
+        });
   }
 
   obtenerMarcasID() {
@@ -72,7 +92,7 @@ export class SelectComponent implements OnInit {
   filterMarcas() {
     let filteredMarcas: ModelsGeneral[] = [];
   
-    if (this.ambienteID && this.canalID) {
+    if (ModelFilter) {
       filteredMarcas = this.pruebaMarcas.filter((marca: { AmbienteID: number; CanalID: number; }) => marca.AmbienteID === this.ambienteID && marca.CanalID === this.canalID);
     } else if (this.ambienteID) {
       filteredMarcas = this.pruebaMarcas.filter((marca: { AmbienteID: number; }) => marca.AmbienteID === this.ambienteID);

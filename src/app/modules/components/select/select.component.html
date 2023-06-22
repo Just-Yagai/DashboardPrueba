@@ -14,7 +14,7 @@
             </select> -->
             <select class="form-select" [disabled]="SelectDisabled" (change)="onAmbienteChange($any($event.target).value)">
                 <!-- <option [ngValue]="undefined" disabled selected>Seleccionar...</option> -->
-                <option *ngFor="let items of selectAmbiente" [value]="items.id">{{ items.nombre }}</option>                  
+                <option *ngFor="let items of datosAmbientes" [value]="items.id">{{ items.nombre }}</option>                  
             </select>
         </div>
         <!-- Select Canal -->
@@ -29,7 +29,7 @@
             </select> -->
             <select class="form-select" [disabled]="SelectDisabled" (change)="onCanalChange($any($event.target).value)">
                 <!-- <option [ngValue]="undefined" disabled selected>Seleccionar...</option> -->
-                <option *ngFor="let items of selectCanal" [value]="items.id">{{ items.nombre }}</option>
+                <option *ngFor="let items of datosCanal" [value]="items.id">{{ items.nombre }}</option>
             </select>
         </div>
         <!-- Select Tipo E-CF -->

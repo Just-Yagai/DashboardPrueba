@@ -5,7 +5,7 @@ import { MarcasService } from 'src/app/services/marcas.service';
 import { DelegacionesService } from 'src/app/services/delegaciones.service';
 import { SecuenciasService } from 'src/app/services/secuencias.service';
 import { RncService } from 'src/app/services/rnc.service';
-import { ModelsFilter, ModelsGeneral } from 'src/app/core';
+import { ModelFilter, ModelsGeneral } from 'src/app/core';
 import { AmbienteService } from '../../components/select/services/ambiente.service';
 import { CanalService } from '../../components/select/services/canal.service';
 import { SelectComponent } from '../../components/select/select.component';
@@ -36,8 +36,6 @@ export class DashboardComponent implements OnInit {
   canalID: 1;
 
   // Select Option
-  datosAmbientes: ModelsFilter[];
-  datosCanal: ModelsFilter[];
   id: string;
   nombre: string;
 
@@ -46,9 +44,7 @@ export class DashboardComponent implements OnInit {
     private getMarcasServices: MarcasService,
     private getDelegacionesServices: DelegacionesService,
     private getSecuenciasServices: SecuenciasService,
-    private getRncEstadoServices: RncService,
-    private getAmbienteServices: AmbienteService,
-    private getCanalServices: CanalService
+    private getRncEstadoServices: RncService
     ) {}
 
   ngOnInit() {}
@@ -65,8 +61,8 @@ export class DashboardComponent implements OnInit {
         this.RNCValido();
         this.obtenerMarcas(this.rnc, this.ambienteID, this.canalID);
         this.selectComponent.obtenerMarcasID();
-        this.obtenerAmbiente();
-        this.obtenerCanal();
+        this.selectComponent.obtenerAmbiente();
+        this.selectComponent.obtenerCanal();
         this.obtenerDelegaciones();
         this.obtenerSecuencias();
         this.obtenerRncEstado();
@@ -121,21 +117,7 @@ export class DashboardComponent implements OnInit {
         })
   }
 
-  obtenerAmbiente(){
-    this.getAmbienteServices.getAmbiente()
-        .subscribe((data) => {
-          this.datosAmbientes = data;
-          // console.log(data);
-        });
-  }
 
-  obtenerCanal(){
-    this.getCanalServices.getCanal()
-        .subscribe((data) => {
-          this.datosCanal = data;
-          // console.log(data);
-        });
-  }
   
   rncNoIntroducido() {
     Swal.fire({
@@ -217,8 +199,6 @@ export class DashboardComponent implements OnInit {
       this.datosMarcas = [];
       this.datosDelegaciones = [];
       this.datosSecuencias = [];
-      this.datosAmbientes = [];
-      this.datosCanal = [];
     }
   } 
 
