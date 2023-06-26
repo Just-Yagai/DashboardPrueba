@@ -60,7 +60,7 @@ export class DashboardComponent implements OnInit {
         this.actualizarDatosRNCValidos(data);
         this.RNCValido();
         this.obtenerMarcas(this.rnc, this.ambienteID, this.canalID);
-        this.selectComponent.obtenerMarcasID();
+        this.selectComponent.obtenerMarcasID(this.rnc);
         this.selectComponent.obtenerAmbiente();
         this.selectComponent.obtenerCanal();
         this.obtenerDelegaciones();

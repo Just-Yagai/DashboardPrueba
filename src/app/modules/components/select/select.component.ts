@@ -29,6 +29,7 @@ export class SelectComponent implements OnInit {
   pruebaDelegaciones: ModelsGeneral[] = [];
   ambienteID: number;
   canalID: number;
+  rnc: string;
   // id: ModelsFilter;
   // rnc: string;
   @Input() filterRNC: string;
@@ -63,8 +64,8 @@ export class SelectComponent implements OnInit {
         });
   }
 
-  obtenerMarcasID() {
-    this.getMarcasServices.getMarcasSelect()
+  obtenerMarcasID(rnc: string) {
+    this.getMarcasServices.getMarcasSelect(rnc)
       .subscribe((data) => {
         this.pruebaMarcas = data;
       });
@@ -92,7 +93,7 @@ export class SelectComponent implements OnInit {
   filterMarcas() {
     let filteredMarcas: ModelsGeneral[] = [];
   
-    if (ModelFilter) {
+    if (this.ambienteID && this.canalID) {
       filteredMarcas = this.pruebaMarcas.filter((marca: { AmbienteID: number; CanalID: number; }) => marca.AmbienteID === this.ambienteID && marca.CanalID === this.canalID);
     } else if (this.ambienteID) {
       filteredMarcas = this.pruebaMarcas.filter((marca: { AmbienteID: number; }) => marca.AmbienteID === this.ambienteID);
@@ -102,6 +103,22 @@ export class SelectComponent implements OnInit {
     this.datosFiltradosMarcas.emit(filteredMarcas);
     console.log(filteredMarcas);
   }
+
+  // filterMarcas() {
+  //   let filteredMarcas: ModelsGeneral[] = [];
+  
+  //   if (this.ambienteID && this.canalID && this.rnc) {
+  //     filteredMarcas = this.pruebaMarcas.filter((marca: { AmbienteID: number; CanalID: number; rnc: string; }) => marca.AmbienteID === this.ambienteID && marca.CanalID === this.canalID && marca.rnc === this.rnc);
+  //   } else if (this.ambienteID) {
+  //     filteredMarcas = this.pruebaMarcas.filter((marca: { AmbienteID: number; }) => marca.AmbienteID === this.ambienteID);
+  //   } else if (this.canalID) {
+  //     filteredMarcas = this.pruebaMarcas.filter((marca: { CanalID: number; }) => marca.CanalID === this.canalID);
+  //   } else if (this.rnc) {
+  //     filteredMarcas = this.pruebaMarcas.filter((marca: { rnc: string; }) => marca.rnc === this.rnc);
+  //   }
+  //   this.datosFiltradosMarcas.emit(filteredMarcas);
+  //   console.log(filteredMarcas);
+  // }
 
   filterDelegaciones() {
     let filteredDelegaciones: ModelsGeneral[] = [];

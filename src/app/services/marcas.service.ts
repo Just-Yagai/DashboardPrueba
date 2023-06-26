@@ -30,8 +30,14 @@ export class MarcasService {
     return this.http.put(url, marca);
   }
 
-  getMarcasSelect(): Observable<any> {
-    return this.http.get<any>('assets/data/marcas.json');
+  // getMarcasSelect(): Observable<any> {
+  //   return this.http.get<any>('assets/data/marcas.json');
+  // }
+
+  getMarcasSelect(rnc: string): Observable<any> {
+    return this.http.get<any>('assets/data/marcas.json').pipe(
+      map(data => data.filter((item: { rnc: string; }) => item.rnc === rnc ))
+    );
   }
 
   // getMarcasSelect(rnc: string, ambienteID: number, canalID: number): Observable<any> {
