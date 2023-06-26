@@ -11,6 +11,7 @@ import { CanalService } from '../../components/select/services/canal.service';
 import { SelectComponent } from '../../components/select/select.component';
 import { ModeloGeneral } from 'src/app/core/models/modelsGeneral2';
 import { modelMarcas } from 'src/app/core/models/marcas';
+import { modelDelegaciones } from 'src/app/core/models/delegaciones';
 
 @Component({
   selector: 'app-dashboard',
@@ -32,7 +33,7 @@ export class DashboardComponent implements OnInit {
 
   
   // Datos: Marcas, Delegaciones
-  datosDelegaciones: ModelsGeneral[];
+  datosDelegaciones: modelDelegaciones[];
   datosSecuencias: ModelsGeneral[];
   datosRncEstado: ModelsGeneral[];
 
@@ -62,12 +63,11 @@ export class DashboardComponent implements OnInit {
         this.actualizarDatosRNCValidos(data);
         this.RNCValido();
         this.obtenerMarcas(this.rnc, 1, 1);
+        this.obtenerDelegaciones(this.rnc, 1, 1);
         this.selectComponent.obtenerMarcasID(this.rnc);
+        this.selectComponent.obtenerDelegacionesID(this.rnc);
         this.selectComponent.obtenerAmbiente();
         this.selectComponent.obtenerCanal();
-        // this.obtenerDelegaciones();
-        // this.obtenerSecuencias();
-        // this.obtenerRncEstado();
       } else {
         this.actualizarDatosRNCInvalidos();
         this.RNCInvalido();
@@ -87,22 +87,15 @@ export class DashboardComponent implements OnInit {
     this.getMarcasServices.getMarcas(rnc, ambienteID, canalID)
         .subscribe((data) => {
           this.datosModelos.MarcasM = data;
-
-          console.log(this.datosModelos.MarcasM );
-          // const resultado = data.filter((item: any) =>item.AmbienteID === 1 && item.CanalID === 1);
-          // this.datosMarcas = data;
-          // console.log(resultado);
-          // console.log(data);
     });
   }
 
-  // obtenerDelegaciones(){
-  //   this.getDelegacionesServices.getDelegaciones(this.rnc, this.ambienteID, this.canalID)
-  //       .subscribe((data) => {
-  //         this.datosDelegaciones = data;
-  //         // console.log(data);
-  //       })
-  // }
+  obtenerDelegaciones(rnc: string, ambienteID: number, canalID: number){
+    this.getDelegacionesServices.getDelegaciones(rnc, ambienteID, canalID)
+        .subscribe((data) => {
+          this.datosModelos.DelegacionesM = data;
+        });
+  }
 
   // obtenerSecuencias(){
   //   this.getSecuenciasServices.getSecuencias(this.rnc, this.ambienteID, this.canalID)
@@ -166,7 +159,7 @@ export class DashboardComponent implements OnInit {
     this.datosTipo = [];
     this.isSelectDisabled = true;
     this.datosModelos.MarcasM = [];
-    this.datosDelegaciones = [];
+    this.datosModelos.DelegacionesM = [];
     this.datosSecuencias = [];
   }
   
@@ -200,7 +193,7 @@ export class DashboardComponent implements OnInit {
       this.datosTipo.inicio_postulacion = '';
       this.datosTipo.finalizacion_postulacion = '';
       this.datosModelos.MarcasM = [];
-      this.datosDelegaciones = [];
+      this.datosModelos.DelegacionesM = [];
       this.datosSecuencias = [];
     }
   } 
@@ -209,8 +202,8 @@ export class DashboardComponent implements OnInit {
     this.datosModelos.MarcasM = datos;
   }
 
-//   actualizarDatosDelegacion es(datos: ModelsGeneral[]) {
-//     this.datosDelegaciones = datos;
-// }
+  actualizarDatosDelegacion(de: modelDelegaciones[]) {
+    this.datosModelos.DelegacionesM = de;
+}
 
 }

@@ -152,10 +152,11 @@
                 role="tabpanel" 
                 aria-labelledby="delegaciones-tab" 
                 tabindex="0">
-                <!-- <app-select (datosFiltradosDelegaciones)="actualizarDatosDelegaciones($event)"
-                            [SelectDisabled]="isSelectDisabled">
-                </app-select> -->
-                <app-delegaciones [Delegaciones]="datosDelegaciones"></app-delegaciones>
+                <app-select
+                            [SelectDisabled]="isSelectDisabled"
+                            (datosFiltradosDelegaciones)="actualizarDatosDelegacion($event)">
+                </app-select>
+                <app-delegaciones [Delegaciones]="datosModelos.DelegacionesM"></app-delegaciones>
             </div>
             <!-- Secuencias -->
             <div class="tab-pane fade" 
