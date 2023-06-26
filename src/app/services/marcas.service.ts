@@ -11,11 +11,15 @@ export class MarcasService {
 
   constructor(private http: HttpClient) { }
 
-  getMarcas(rnc: string, ambienteID: number, canalID: number): Observable<any> {
-    return this.http.get<any>('assets/data/marcas.json').pipe(
-      map(data => data.filter((item: { rnc: string; ambienteID: number; canalID: number}) => item.rnc === rnc &&
-      item.ambienteID === ambienteID &&
-      item.canalID === canalID))
+  getMarcas(rnc: string, ambienteID: number, canalID: number): Observable<ModelsGeneral[]> {
+    return this.http.get<ModelsGeneral[]>('assets/data/marcas.json').pipe(
+      map(data =>
+        data.filter(marca =>
+          marca.rnc === rnc &&
+          marca.AmbienteID === ambienteID &&
+          marca.CanalID === canalID
+        )
+      )
     );
   }
 

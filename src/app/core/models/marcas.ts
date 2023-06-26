@@ -3,6 +3,6 @@ export class modelMarcas{
     tipo: string;
     estado: string;
     fecha_inicio_operacion: string;
-    ambienteID: number;
-    canalID: number;
+    AmbienteID: number;
+    CanalID: number;
 }

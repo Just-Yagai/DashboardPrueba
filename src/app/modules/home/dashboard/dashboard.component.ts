@@ -9,6 +9,8 @@ import { ModelFilter, ModelsGeneral } from 'src/app/core';
 import { AmbienteService } from '../../components/select/services/ambiente.service';
 import { CanalService } from '../../components/select/services/canal.service';
 import { SelectComponent } from '../../components/select/select.component';
+import { ModeloGeneral } from 'src/app/core/models/modelsGeneral2';
+import { modelMarcas } from 'src/app/core/models/marcas';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,6 +20,8 @@ import { SelectComponent } from '../../components/select/select.component';
 export class DashboardComponent implements OnInit {
 
   @ViewChild(SelectComponent) selectComponent: SelectComponent;
+  
+  datosModelos: ModeloGeneral = new ModeloGeneral();
 
   rnc: string;
   razonSocial: string;
@@ -26,15 +30,13 @@ export class DashboardComponent implements OnInit {
   isSelectDisabled: boolean = true;
   datosTipo: any = [];
 
+  
   // Datos: Marcas, Delegaciones
-  datosMarcas: ModelsGeneral[];
   datosDelegaciones: ModelsGeneral[];
   datosSecuencias: ModelsGeneral[];
   datosRncEstado: ModelsGeneral[];
 
-  ambienteID: 1;
-  canalID: 1;
-
+  
   // Select Option
   id: string;
   nombre: string;
@@ -59,13 +61,13 @@ export class DashboardComponent implements OnInit {
       if (data) {
         this.actualizarDatosRNCValidos(data);
         this.RNCValido();
-        this.obtenerMarcas(this.rnc, this.ambienteID, this.canalID);
+        this.obtenerMarcas(this.rnc, 1, 1);
         this.selectComponent.obtenerMarcasID(this.rnc);
         this.selectComponent.obtenerAmbiente();
         this.selectComponent.obtenerCanal();
-        this.obtenerDelegaciones();
-        this.obtenerSecuencias();
-        this.obtenerRncEstado();
+        // this.obtenerDelegaciones();
+        // this.obtenerSecuencias();
+        // this.obtenerRncEstado();
       } else {
         this.actualizarDatosRNCInvalidos();
         this.RNCInvalido();
@@ -84,8 +86,9 @@ export class DashboardComponent implements OnInit {
   obtenerMarcas(rnc: string, ambienteID: number, canalID: number){
     this.getMarcasServices.getMarcas(rnc, ambienteID, canalID)
         .subscribe((data) => {
-          this.datosMarcas = data;
-          console.log(data);
+          this.datosModelos.MarcasM = data;
+
+          console.log(this.datosModelos.MarcasM );
           // const resultado = data.filter((item: any) =>item.AmbienteID === 1 && item.CanalID === 1);
           // this.datosMarcas = data;
           // console.log(resultado);
@@ -93,29 +96,29 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  obtenerDelegaciones(){
-    this.getDelegacionesServices.getDelegaciones(this.rnc, this.ambienteID, this.canalID)
-        .subscribe((data) => {
-          this.datosDelegaciones = data;
-          // console.log(data);
-        })
-  }
+  // obtenerDelegaciones(){
+  //   this.getDelegacionesServices.getDelegaciones(this.rnc, this.ambienteID, this.canalID)
+  //       .subscribe((data) => {
+  //         this.datosDelegaciones = data;
+  //         // console.log(data);
+  //       })
+  // }
 
-  obtenerSecuencias(){
-    this.getSecuenciasServices.getSecuencias(this.rnc, this.ambienteID, this.canalID)
-        .subscribe((data) => {
-          this.datosSecuencias = data;
-          // console.log(data);
-        })
-  }
+  // obtenerSecuencias(){
+  //   this.getSecuenciasServices.getSecuencias(this.rnc, this.ambienteID, this.canalID)
+  //       .subscribe((data) => {
+  //         this.datosSecuencias = data;
+  //         // console.log(data);
+  //       })
+  // }
 
-  obtenerRncEstado(){
-    this.getRncEstadoServices.getRncEstado(this.rnc, this.ambienteID, this.canalID)
-        .subscribe((data) => {
-          this.datosRncEstado = data;
-          // console.log(data);
-        })
-  }
+  // obtenerRncEstado(){
+  //   this.getRncEstadoServices.getRncEstado(this.rnc, this.ambienteID, this.canalID)
+  //       .subscribe((data) => {
+  //         this.datosRncEstado = data;
+  //         // console.log(data);
+  //       })
+  // }
 
 
   
@@ -162,7 +165,7 @@ export class DashboardComponent implements OnInit {
     this.tipoCertificacion = [];
     this.datosTipo = [];
     this.isSelectDisabled = true;
-    this.datosMarcas = [];
+    this.datosModelos.MarcasM = [];
     this.datosDelegaciones = [];
     this.datosSecuencias = [];
   }
@@ -196,18 +199,18 @@ export class DashboardComponent implements OnInit {
       this.datosTipo.estado = '';
       this.datosTipo.inicio_postulacion = '';
       this.datosTipo.finalizacion_postulacion = '';
-      this.datosMarcas = [];
+      this.datosModelos.MarcasM = [];
       this.datosDelegaciones = [];
       this.datosSecuencias = [];
     }
   } 
 
-  actualizarDatosMarcas(datos: ModelsGeneral[]) {
-      this.datosMarcas = datos;
+  actualizarDatosMarcas(datos: modelMarcas[]) {
+    this.datosModelos.MarcasM = datos;
   }
 
-  actualizarDatosDelegaciones(datos: ModelsGeneral[]) {
-    this.datosDelegaciones = datos;
-}
+//   actualizarDatosDelegacion es(datos: ModelsGeneral[]) {
+//     this.datosDelegaciones = datos;
+// }
 
 }
