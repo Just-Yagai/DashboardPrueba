@@ -142,7 +142,8 @@
                 tabindex="0">
                 <app-select
                             [SelectDisabled]="isSelectDisabled"
-                            (datosFiltradosMarcas)="actualizarDatosMarcas($event)">
+                            [filtro]="filtrado"
+                            (filtrarMarcas)="obtenerMarcas($event)">
                 </app-select>
                 <app-marcas [Marcas]="datosModelos.MarcasM"></app-marcas>
             </div>
@@ -154,7 +155,8 @@
                 tabindex="0">
                 <app-select
                             [SelectDisabled]="isSelectDisabled"
-                            (datosFiltradosDelegaciones)="actualizarDatosDelegacion($event)">
+                            [filtro]="filtrado"
+                            (filtrarMarcas)="obtenerDelegaciones($event)">
                 </app-select>
                 <app-delegaciones [Delegaciones]="datosModelos.DelegacionesM"></app-delegaciones>
             </div>

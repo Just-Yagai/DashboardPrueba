@@ -12,7 +12,8 @@
                 <option value="2">Precertificacion</option>
                 <option value="3">Certificacion</option>
             </select> -->
-            <select class="form-select" [disabled]="SelectDisabled" (change)="onAmbienteChange($any($event.target).value)">
+            <select class="form-select" [disabled]="SelectDisabled" 
+                                        (change)="onAmbienteChange($any($event.target).value)">
                 <!-- <option [ngValue]="undefined" disabled selected>Seleccionar...</option> -->
                 <option *ngFor="let items of datosAmbientes" [value]="items.id">{{ items.nombre }}</option>                  
             </select>
@@ -27,7 +28,8 @@
                 <option value="1">B2B</option>
                 <option value="2">B2C</option>
             </select> -->
-            <select class="form-select" [disabled]="SelectDisabled" (change)="onCanalChange($any($event.target).value)">
+            <select class="form-select" [disabled]="SelectDisabled" 
+                                        (change)="onCanalChange($any($event.target).value)">
                 <!-- <option [ngValue]="undefined" disabled selected>Seleccionar...</option> -->
                 <option *ngFor="let items of datosCanal" [value]="items.id">{{ items.nombre }}</option>
             </select>

@@ -31,13 +31,14 @@ export class DashboardComponent implements OnInit {
   isSelectDisabled: boolean = true;
   datosTipo: any = [];
 
-  
+  filtrado: ModelFilter = new ModelFilter('',0,'',0,0);
+
   // Datos: Marcas, Delegaciones
+  datosMarcas: modelMarcas[];
   datosDelegaciones: modelDelegaciones[];
   datosSecuencias: ModelsGeneral[];
   datosRncEstado: ModelsGeneral[];
 
-  
   // Select Option
   id: string;
   nombre: string;
@@ -62,12 +63,16 @@ export class DashboardComponent implements OnInit {
       if (data) {
         this.actualizarDatosRNCValidos(data);
         this.RNCValido();
-        this.obtenerMarcas(this.rnc, 1, 1);
-        this.obtenerDelegaciones(this.rnc, 1, 1);
-        this.selectComponent.obtenerMarcasID(this.rnc);
-        this.selectComponent.obtenerDelegacionesID(this.rnc);
-        this.selectComponent.obtenerAmbiente();
-        this.selectComponent.obtenerCanal();
+        this.filtrado.rnc = this.rnc;
+        this.filtrado.ambienteID = 1;
+        this.filtrado.canalID = 1;
+        this.obtenerMarcas(this.filtrado);
+        this.obtenerDelegaciones(this.filtrado);
+        // this.selectComponent.obtenerMarcasID(this.rnc);
+        this.filtrado.rnc = this.rnc;
+        // this.selectComponent.obtenerDelegacionesID(this.rnc);
+        // this.selectComponent.obtenerAmbiente();
+        // this.selectComponent.obtenerCanal();
       } else {
         this.actualizarDatosRNCInvalidos();
         this.RNCInvalido();
@@ -83,15 +88,15 @@ export class DashboardComponent implements OnInit {
   //   });
   // }
 
-  obtenerMarcas(rnc: string, ambienteID: number, canalID: number){
-    this.getMarcasServices.getMarcas(rnc, ambienteID, canalID)
+  obtenerMarcas(filtrado: ModelFilter){
+    this.getMarcasServices.getMarcas(filtrado.rnc, filtrado.ambienteID, filtrado.canalID)
         .subscribe((data) => {
           this.datosModelos.MarcasM = data;
     });
   }
 
-  obtenerDelegaciones(rnc: string, ambienteID: number, canalID: number){
-    this.getDelegacionesServices.getDelegaciones(rnc, ambienteID, canalID)
+  obtenerDelegaciones(filtrado: ModelFilter){
+    this.getDelegacionesServices.getDelegaciones(filtrado.rnc, filtrado.ambienteID, filtrado.canalID)
         .subscribe((data) => {
           this.datosModelos.DelegacionesM = data;
         });
@@ -198,12 +203,14 @@ export class DashboardComponent implements OnInit {
     }
   } 
 
-  actualizarDatosMarcas(datos: modelMarcas[]) {
-    this.datosModelos.MarcasM = datos;
-  }
+  // actualizarDatosMarcas(datos: modelMarcas[]) {
+  //   this.datosModelos.MarcasM = datos;
+  //   this.datosMarcas = datos;
+  // }
 
-  actualizarDatosDelegacion(de: modelDelegaciones[]) {
-    this.datosModelos.DelegacionesM = de;
-}
+  // actualizarDatosDelegacion(datos: modelDelegaciones[]) {
+  //   this.datosModelos.DelegacionesM = datos;
+  //   this.datosModelos.DelegacionesM = datos;
+  // }
 
 }

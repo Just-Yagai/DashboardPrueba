@@ -22,7 +22,20 @@
     "identificacion": "40253689562",
     "fechaRegistro": "14/05/2023",
     "fechaActualizacion": "12/05/2023",
-    "AmbienteID": 2,
-    "CanalID": 2
+    "AmbienteID": 1,
+    "CanalID": 1
+  },
+  {
+    "rnc": "002",
+    "firmanteAutorizado": null,
+    "solicitanteAutorizado": null,
+    "aprobadorComercial": null,
+    "administrador": null,
+    "estado": "",
+    "identificacion": "1232e3232323",
+    "fechaRegistro": "14/05/2023",
+    "fechaActualizacion": "12/05/2023",
+    "AmbienteID": 1,
+    "CanalID": 1
   }
 ]
